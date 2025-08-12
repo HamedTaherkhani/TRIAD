@@ -1,2 +1,11 @@
 .venv
 .idea
+.bigcode_venv
+.env
+*.ipynb
+Kornia
+*.csv
+*.tsv
+__pycache__/
+dual/__pycache__/
+loaders/__pycache__/

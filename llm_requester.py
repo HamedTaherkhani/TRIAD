@@ -1,0 +1,300 @@
+import time
+from typing import List
+import anthropic
+from openai import OpenAI
+import os
+import requests
+import json
+from dotenv import load_dotenv
+load_dotenv()
+# from swebench import generate_test_cases_for_swebench
+# import vertexai
+# from vertexai.generative_models._generative_models import ResponseValidationError
+# from vertexai.generative_models import GenerativeModel, ChatSession, GenerationConfig
+# Import necessary libraries for different LLMs
+from abc import ABC, abstractmethod
+from llamaapi import LlamaAPI
+# import google.generativeai as genai
+from dataclasses import dataclass
+backends = ['openAI', 'fireworks']
+
+class LLMRequester(ABC):
+    @abstractmethod
+    def get_completion(self, messages, **kwargs):
+        raise NotImplementedError()
+    def get_total_usage(self):
+        raise NotImplementedError()
+@dataclass
+class TokenUsage:
+    prompt_tokens: int = 0
+    completion_tokens: int = 0
+    total_tokens: int = 0
+
+    def __add__(self, other):
+        return TokenUsage(self.prompt_tokens + other.prompt_tokens, self.completion_tokens + other.completion_tokens, self.total_tokens + other.total_tokens)
+
+class FireworksAPIRequester(LLMRequester):
+    def __init__(self, name, token_usage:TokenUsage):
+        self.name = name
+        self.key = os.getenv("fireworks_key")
+        self.token_usage = token_usage
+
+    def get_total_usage(self):
+        return self.token_usage
+
+    def get_completion(self, messages, **kwargs) -> list[str]:
+
+        prompt = ''.join([message['content'] for message in messages])
+        # print(prompt)
+        url = "https://api.fireworks.ai/inference/v1/chat/completions"
+        payload = {
+            "model": f"accounts/fireworks/models/{self.name}",
+            "presence_penalty": 0,
+            "frequency_penalty": 0,
+            "temperature": kwargs["temperature"],
+            "messages": [
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            "n":kwargs['n'],
+        }
+        headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {self.key}"
+        }
+        res = requests.request("POST", url, headers=headers, data=json.dumps(payload))
+        try:
+            res = res.json()
+            self.token_usage.completion_tokens += res['usage']['completion_tokens']
+            self.token_usage.prompt_tokens += res['usage']['prompt_tokens']
+            self.token_usage.total_tokens += res['usage']['total_tokens']
+            return [res['message']['content'] for res in res['choices']]
+        except (requests.exceptions.JSONDecodeError, KeyError) as e:
+            print(res)
+            return [prompt]
+
+
+class OpenaiRequester(LLMRequester):
+    def __init__(self, name,token_usage, backend=None):
+        self.key = os.getenv('openai_key')
+        self.token_usage = token_usage
+        if backend is None:
+            self.client = OpenAI(api_key=self.key)
+        else:
+            if backend == "https://api.aimlapi.com/v1":
+                self.key = os.getenv('aimlapi_key')
+            elif backend == "https://api.deepinfra.com/v1/openai":
+                self.key = os.getenv('deepinfraapi_key')
+            else:
+                self.key = os.getenv('deepseek_key')
+            self.client = OpenAI(api_key=self.key, base_url=backend)
+        self.name = name
+
+    def get_total_usage(self):
+        return self.token_usage
+
+    def get_completion(self,
+            messages: list[str],
+            max_tokens=4000,
+            temperature=0,
+            seed=123,
+            n=1,
+    ) -> list[str]:
+        params = {
+            "model": self.name,
+            "messages": messages,
+            "max_tokens": max_tokens,
+            "temperature": temperature,
+            "seed": seed,
+            "n": n
+        }
+        completion = self.client.chat.completions.create(**params)
+        self.token_usage.completion_tokens += completion.usage.completion_tokens
+        self.token_usage.prompt_tokens += completion.usage.prompt_tokens
+        self.token_usage.total_tokens += completion.total_tokens
+        return [choice.message.content for choice in completion.choices]
+
+
+class VertexAIRequester(LLMRequester):
+    def __init__(self, name):
+        PROJECT_ID = os.getenv('GCP_PROJECT')
+        GCP_LOCATION = os.getenv('GCP_LOCATION')
+        vertexai.init(project=PROJECT_ID, location=GCP_LOCATION)
+        self.config = GenerationConfig(logprobs=2, response_logprobs=True, temperature=0, max_output_tokens=1500)
+        model = GenerativeModel(name)
+        self.chat_session = model.start_chat()
+
+    def get_completion(self, messages, **kwargs):
+        prompt = ''.join([message['content'] for message in messages])
+        try:
+            responses = self.chat_session.send_message(prompt, stream=False, generation_config=self.config)
+        except ResponseValidationError:
+            return {
+                'text': ' ',
+                'logprobs': [],
+            }
+        res = responses.candidates[0].content.parts[0].text
+        tokens_with_logprobs = []
+        for lgp in responses.candidates[0].logprobs_result.top_candidates:
+            tokens_with_logprobs.append((lgp.candidates[0].token, lgp.candidates[0].log_probability, [(l.token, l.log_probability) for l in lgp.candidates[1:]]))
+        return {
+            'text': res,
+            'logprobs': tokens_with_logprobs
+        }
+
+class AntropicRequester(LLMRequester):
+    def __init__(self, name):
+        self.client = anthropic.Anthropic(api_key=os.getenv("anthropic_key"))
+        self.name = name
+    def get_completion(self, messages, **kwargs):
+        prompt = ''.join([message['content'] for message in messages])
+        response = self.client.messages.create(
+            model=self.name,
+            max_tokens=4000,
+            # temperature=1,
+            system="You are an expert python developer who writes good test cases.",
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": prompt
+                        }
+                    ]
+                }
+            ]
+        )
+        text = response.content[0].text
+        return {
+            'text': text,
+            'logprobs': []
+        }
+
+class GeminiRequester(LLMRequester):
+    def __init__(self, candidates=1):
+        genai.configure(api_key=os.getenv('gemini_key'))
+        self.client = genai.GenerativeModel("models/gemini-1.5-pro")
+        self.candidates = candidates
+    def get_completion(self, messages, **kwargs):
+        try:
+            prompt = ''.join([message['content'] for message in messages])
+            response = self.client.generate_content(
+                prompt,
+                generation_config=genai.types.GenerationConfig(
+                    # Only one candidate for now.
+                    candidate_count=self.candidates,
+                    # stop_sequences=["x"],
+                    # max_output_tokens=20,
+                    # temperature=0.3,
+                    # top_k=8,
+                    # response_logprobs=True,
+                    # logprobs=2
+                ),
+            )
+            candidates = []
+            for idx, candidate in enumerate(response.candidates):
+                a = {
+                    'text': candidate.content.parts[0].text,
+                    'logprobs': []
+                }
+                candidates.append(a)
+            return candidates
+        except Exception as e:
+            return [{
+                'text': '',
+                'logprobs': []
+            }]
+# CodeLlama Requester
+class HuggingfaceRequester(LLMRequester):
+    def __init__(self, model_name):
+        quantization_config = BitsAndBytesConfig(
+            load_in_4bit=True,
+            bnb_4bit_compute_dtype=torch.float16,
+            # load_in_8bit_fp32_cpu_offload=True
+        )
+
+        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        device_map = {
+            "": self.device.type  # Automatically handles the best placement based on your setup
+        }
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name, )
+        self.tokenizer.pad_token = self.tokenizer.eos_token
+        self.model = AutoModelForCausalLM.from_pretrained(model_name, device_map=device_map)
+
+    def get_completion(self, messages, **kwargs):
+        prompt = ''.join([message['content'] for message in messages])
+        input_ids = self.tokenizer.encode(prompt, return_tensors='pt').to(self.device)
+        max_length = kwargs.get('max_tokens', 2000) + input_ids.shape[1]
+        inputs = self.tokenizer(
+            prompt,
+            return_tensors="pt",  # Return as PyTorch tensors
+            padding=True,  # Enable padding
+            truncation=True,  # Enable truncation
+            max_length=max_length,  # Limit sequence length
+            return_attention_mask=True  # Generate the attention mask
+        ).to(self.device)
+
+
+
+        outputs = self.model.generate(
+            input_ids=inputs['input_ids'],
+            max_length=max_length,
+            temperature=kwargs.get('temperature', 0.0),
+            do_sample=False,
+            num_return_sequences=1,
+            eos_token_id=self.tokenizer.eos_token_id,
+            pad_token_id=self.tokenizer.pad_token_id,
+            output_scores=True,
+            return_dict_in_generate=True,
+            attention_mask=inputs["attention_mask"],
+        )
+        generated_sequence = outputs.sequences[0]
+        generated_tokens = generated_sequence[input_ids.shape[1]:]  # Exclude prompt tokens
+        completion = self.tokenizer.decode(generated_tokens, skip_special_tokens=True)
+
+        # Access the scores (logits) for each step
+        scores = outputs.scores
+        # List to hold results: (token, log_prob, all_log_probs)
+        tokens_with_logprobs = []
+
+        top_k = 5
+
+        # Iterate through each generated token
+        for i, token_id in enumerate(generated_tokens):
+            # Get the logits for the i-th step
+            logits = scores[i]  # Shape: (batch_size, vocab_size)
+
+            # Convert logits to log probabilities
+            log_probs = F.log_softmax(logits, dim=-1)[0]  # Get log probs for the current step
+
+            # Extract the log probability of the generated token
+            generated_log_prob = log_probs[token_id].item()
+
+            # Get the top-k log probabilities and their indices
+            top_k_log_probs, top_k_indices = torch.topk(log_probs, top_k)
+
+            # Convert top-k indices and log probs to tuples (token, log_prob)
+            top_k_candidates = [(self.tokenizer.decode([tid]), top_k_log_probs[j].item()) for j, tid in
+                                enumerate(top_k_indices)]
+
+            # Append the generated token, its log prob, and top-k candidate log probs
+            tokens_with_logprobs.append((self.tokenizer.decode([token_id]), generated_log_prob, top_k_candidates))
+
+        return {
+            'text': completion,
+            'logprobs': tokens_with_logprobs
+            }
+
+def init_llm(model: str, backend:str) -> LLMRequester:
+    token_usage = TokenUsage()
+    if backend == 'openAI':
+        llm = OpenaiRequester(name=model, token_usage=token_usage)
+    elif backend == 'fireworks':
+        llm = FireworksAPIRequester(name=model,token_usage=token_usage)
+    else:
+        raise ValueError('backend not known')
+    return llm

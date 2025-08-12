@@ -40,6 +40,8 @@ def run_test_cases(func_code, test_cases, timeout=5):
     """
     def run_test_case(func_code, test_case_str, output_queue):
         # Create a namespace dictionary for the function code
+        # print(func_code)
+        # print(test_case_str)
         func_namespace = {}
         try:
             exec(func_code, func_namespace)
@@ -53,7 +55,11 @@ def run_test_cases(func_code, test_cases, timeout=5):
             output_queue.put(True)
         except AssertionError:
             output_queue.put(False)
-        except Exception:
+        except Exception as e:
+            # print(func_code)
+            # print(test_case_str)
+            # print(e.__str__())
+            # print('*'*100)
             output_queue.put(False)
 
     results = []
@@ -218,30 +224,11 @@ def parse_unittest_output(output: str) -> Tuple[int, int]:
         failed = 1
     return (passed, failed)
 
-def worker_wrapper_subprocess(test_str: str, code_str: str) -> Tuple[bool, str]:
-    """
-    A wrapper that calls run_single_test_subprocess and returns whether all tests passed.
-
-    Args:
-        test_str (str): The test code string.
-        code_str (str): The code string under test.
-
-    Returns:
-        tuple: (all_passed, output) where `all_passed` is True if all tests passed.
-    """
+def worker_wrapper_subprocess(test_str: str, code_str: str):
     all_passed, passed, failed, output = run_single_test_subprocess(code_str, test_str)
     return all_passed, passed, failed, output
 
 def pool_worker_subprocess(arg_tuple):
-    """
-    Unpack arguments and call worker_wrapper_subprocess.
-
-    Args:
-        arg_tuple (tuple): Tuple of (test_str, code_str)
-
-    Returns:
-        tuple: Result from worker_wrapper_subprocess.
-    """
     test_str, code_str = arg_tuple
     return worker_wrapper_subprocess(test_str, code_str)
 
@@ -269,7 +256,7 @@ def run_unit_tests_parallel(code_str: str, test_list: List[str]):
     # multiprocessing.set_start_method('spawn')
     # print(f'Processing {len(test_list)} test cases...')
     args = [(test_str, code_str) for test_str in test_list]
-    with multiprocessing.Pool(5) as pool:
+    with multiprocessing.Pool() as pool:
         results = pool.map_async(pool_worker_subprocess, args)
         try:
             # Set a reasonable timeout for all tests to complete
