@@ -3,7 +3,6 @@
 .bigcode_venv
 .env
 *.ipynb
-Kornia
 *.csv
 *.tsv
 __pycache__/

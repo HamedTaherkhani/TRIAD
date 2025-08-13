@@ -1,0 +1,4 @@
+2025-07-22 18:10:17,847 - MainThread - INFO - Using function_name as-is: invert
+2025-07-22 18:10:17,848 - MainThread - INFO - Using function_name as-is: invert
+2025-07-22 18:10:17,849 - MainThread - ERROR - Error creating test file for DLBench/76: [Errno 13] Permission denied: '/home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this_invert.py'
+2025-07-22 18:10:17,849 - MainThread - ERROR - Failed to create test file for task DLBench/76

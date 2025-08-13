@@ -1,0 +1,1018 @@
+2025-07-22 19:16:15,767 - MainThread - INFO - Using function_name as-is: invert
+2025-07-22 19:16:15,768 - MainThread - INFO - Using function_name as-is: invert
+2025-07-22 19:16:15,769 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this_invert.py
+2025-07-22 19:16:15,770 - MainThread - INFO - __pycache__ cleared.
+2025-07-22 19:16:15,770 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this_invert.py --color=no --cache-clear -v -s"
+2025-07-22 19:16:19,555 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:16:19,555 - MainThread - INFO - Completed task DLBench/76
+2025-07-22 19:16:19,615 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:16:19,615 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:16:19,617 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/grad_estimator/test_this_forward.py
+2025-07-22 19:16:19,617 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/grad_estimator/test_this_forward.py --color=no --cache-clear -v -s"
+2025-07-22 19:16:23,521 - MainThread - WARNING - No clear result found for test test_grad_check, marking as failed
+2025-07-22 19:16:23,522 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:16:23,522 - MainThread - INFO - Completed task DLBench/80
+2025-07-22 19:16:23,558 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:16:23,558 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:16:23,561 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this_forward.py
+2025-07-22 19:16:23,561 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this_forward.py --color=no --cache-clear -v -s"
+2025-07-22 19:16:27,664 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:16:27,664 - MainThread - INFO - Completed task DLBench/81
+2025-07-22 19:16:27,724 - MainThread - INFO - Using function_name as-is: motion_from_essential
+2025-07-22 19:16:27,724 - MainThread - INFO - Using function_name as-is: motion_from_essential
+2025-07-22 19:16:27,727 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_motion_from_essential.py
+2025-07-22 19:16:27,727 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_motion_from_essential.py --color=no --cache-clear -v -s"
+2025-07-22 19:16:31,589 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:16:31,590 - MainThread - INFO - Completed task DLBench/83
+2025-07-22 19:16:31,631 - MainThread - INFO - Using function_name as-is: rgb_to_rgba
+2025-07-22 19:16:31,631 - MainThread - INFO - Using function_name as-is: rgb_to_rgba
+2025-07-22 19:16:31,633 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/color/test_this_rgb_to_rgba.py
+2025-07-22 19:16:31,633 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/color/test_this_rgb_to_rgba.py --color=no --cache-clear -v -s"
+2025-07-22 19:16:35,461 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:16:35,461 - MainThread - INFO - Completed task DLBench/85
+2025-07-22 19:16:35,523 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:16:35,523 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:16:35,526 - MainThread - INFO - Removing problematic import: from your_module import ['LoFTR']
+2025-07-22 19:16:35,526 - MainThread - INFO - Removing problematic import: from your_module import ['LoFTR']
+2025-07-22 19:16:35,526 - MainThread - INFO - Removing problematic import: from your_module import ['LoFTR']
+2025-07-22 19:16:35,526 - MainThread - INFO - Removing problematic import: from your_module import ['LoFTR']
+2025-07-22 19:16:35,526 - MainThread - INFO - Removing problematic import: from your_module import ['LoFTR']
+2025-07-22 19:16:35,526 - MainThread - INFO - Removing problematic import: from your_module import ['LoFTR']
+2025-07-22 19:16:35,526 - MainThread - INFO - Removing problematic import: from your_module import ['LoFTR']
+2025-07-22 19:16:35,526 - MainThread - INFO - Removing problematic import: from your_module import ['LoFTR']
+2025-07-22 19:16:35,526 - MainThread - INFO - Removing problematic import: from your_module import ['LoFTR']
+2025-07-22 19:16:35,526 - MainThread - INFO - Removing problematic import: from your_module import ['LoFTR']
+2025-07-22 19:16:35,526 - MainThread - INFO - Removing problematic import: from your_module import ['LoFTR']
+2025-07-22 19:16:35,526 - MainThread - INFO - Removing problematic import: from your_module import ['LoFTR']
+2025-07-22 19:16:35,526 - MainThread - INFO - Removing problematic import: from your_module import ['LoFTR']
+2025-07-22 19:16:35,527 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/loftr/test_this_forward.py
+2025-07-22 19:16:35,527 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/loftr/test_this_forward.py --color=no --cache-clear -v -s"
+2025-07-22 19:16:43,914 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:16:43,914 - MainThread - INFO - Completed task DLBench/90
+2025-07-22 19:16:43,942 - MainThread - INFO - Using function_name as-is: match_fginn
+2025-07-22 19:16:43,942 - MainThread - INFO - Using function_name as-is: match_fginn
+2025-07-22 19:16:43,945 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/test_this_match_fginn.py
+2025-07-22 19:16:43,945 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/test_this_match_fginn.py --color=no --cache-clear -v -s"
+2025-07-22 19:16:48,505 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:16:48,505 - MainThread - INFO - Completed task DLBench/92
+2025-07-22 19:16:48,553 - MainThread - INFO - Using function_name as-is: undistort_points_kannala_brandt
+2025-07-22 19:16:48,554 - MainThread - INFO - Using function_name as-is: undistort_points_kannala_brandt
+2025-07-22 19:16:48,557 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/camera/test_this_undistort_points_kannala_brandt.py
+2025-07-22 19:16:48,558 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/camera/test_this_undistort_points_kannala_brandt.py --color=no --cache-clear -v -s"
+2025-07-22 19:16:53,296 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:16:53,297 - MainThread - INFO - Completed task DLBench/93
+2025-07-22 19:16:53,353 - MainThread - INFO - Using function_name as-is: depth_to_normals
+2025-07-22 19:16:53,355 - MainThread - INFO - Using function_name as-is: depth_to_normals
+2025-07-22 19:16:53,358 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_depth_to_normals.py
+2025-07-22 19:16:53,358 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_depth_to_normals.py --color=no --cache-clear -v -s"
+2025-07-22 19:17:00,561 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:17:00,561 - MainThread - INFO - Completed task DLBench/96
+2025-07-22 19:17:01,067 - MainThread - INFO - Using function_name as-is: get_perspective_transform
+2025-07-22 19:17:01,068 - MainThread - INFO - Using function_name as-is: get_perspective_transform
+2025-07-22 19:17:01,075 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/transform/test_this_get_perspective_transform.py
+2025-07-22 19:17:01,075 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/transform/test_this_get_perspective_transform.py --color=no --cache-clear -v -s"
+2025-07-22 19:17:08,833 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:17:08,833 - MainThread - INFO - Completed task DLBench/98
+2025-07-22 19:17:08,899 - MainThread - INFO - Using function_name as-is: match_snn
+2025-07-22 19:17:08,899 - MainThread - INFO - Using function_name as-is: match_snn
+2025-07-22 19:17:08,903 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/test_this_match_snn.py
+2025-07-22 19:17:08,903 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/test_this_match_snn.py --color=no --cache-clear -v -s"
+2025-07-22 19:17:17,706 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:17:17,707 - MainThread - INFO - Completed task DLBench/99
+2025-07-22 19:17:17,765 - MainThread - INFO - Using function_name as-is: normalize_kernel2d
+2025-07-22 19:17:17,765 - MainThread - INFO - Using function_name as-is: normalize_kernel2d
+2025-07-22 19:17:17,770 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/filters/test_this_normalize_kernel2d.py
+2025-07-22 19:17:17,770 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/filters/test_this_normalize_kernel2d.py --color=no --cache-clear -v -s"
+2025-07-22 19:17:26,405 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:17:26,406 - MainThread - INFO - Completed task DLBench/101
+2025-07-22 19:17:26,476 - MainThread - INFO - Using function_name as-is: project_points
+2025-07-22 19:17:26,478 - MainThread - INFO - Using function_name as-is: project_points
+2025-07-22 19:17:26,486 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/camera/test_this_project_points.py
+2025-07-22 19:17:26,486 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/camera/test_this_project_points.py --color=no --cache-clear -v -s"
+2025-07-22 19:17:35,384 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:17:35,385 - MainThread - INFO - Completed task DLBench/102
+2025-07-22 19:17:35,521 - MainThread - INFO - Using function_name as-is: quaternion_to_axis_angle
+2025-07-22 19:17:35,521 - MainThread - INFO - Using function_name as-is: quaternion_to_axis_angle
+2025-07-22 19:17:35,527 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_quaternion_to_axis_angle.py
+2025-07-22 19:17:35,528 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_quaternion_to_axis_angle.py --color=no --cache-clear -v -s"
+2025-07-22 19:17:44,365 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:17:44,365 - MainThread - INFO - Completed task DLBench/103
+2025-07-22 19:17:44,468 - MainThread - INFO - Using function_name as-is: match_nn
+2025-07-22 19:17:44,468 - MainThread - INFO - Using function_name as-is: match_nn
+2025-07-22 19:17:44,475 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/test_this_match_nn.py
+2025-07-22 19:17:44,475 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/test_this_match_nn.py --color=no --cache-clear -v -s"
+2025-07-22 19:17:53,590 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:17:53,590 - MainThread - INFO - Completed task DLBench/107
+2025-07-22 19:17:53,694 - MainThread - INFO - Using function_name as-is: projection_from_KRt
+2025-07-22 19:17:53,696 - MainThread - INFO - Using function_name as-is: projection_from_KRt
+2025-07-22 19:17:53,703 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_projection_from_KRt.py
+2025-07-22 19:17:53,703 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_projection_from_KRt.py --color=no --cache-clear -v -s"
+2025-07-22 19:18:02,119 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:18:02,120 - MainThread - INFO - Completed task DLBench/115
+2025-07-22 19:18:02,287 - MainThread - INFO - Using function_name as-is: motion_from_essential_choose_solution
+2025-07-22 19:18:02,296 - MainThread - INFO - Using function_name as-is: motion_from_essential_choose_solution
+2025-07-22 19:18:02,305 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_motion_from_essential_choose_solution.py
+2025-07-22 19:18:02,305 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_motion_from_essential_choose_solution.py --color=no --cache-clear -v -s"
+2025-07-22 19:18:11,154 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:18:11,154 - MainThread - INFO - Completed task DLBench/120
+2025-07-22 19:18:11,310 - MainThread - INFO - Using function_name as-is: fundamental_from_projections
+2025-07-22 19:18:11,318 - MainThread - INFO - Using function_name as-is: fundamental_from_projections
+2025-07-22 19:18:11,323 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_fundamental_from_projections.py
+2025-07-22 19:18:11,323 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_fundamental_from_projections.py --color=no --cache-clear -v -s"
+2025-07-22 19:18:20,132 - MainThread - WARNING - No clear result found for test test_invalid_type, marking as failed
+2025-07-22 19:18:20,132 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:18:20,133 - MainThread - INFO - Completed task DLBench/122
+2025-07-22 19:18:20,220 - MainThread - INFO - Using function_name as-is: rgb_to_yuv420
+2025-07-22 19:18:20,221 - MainThread - INFO - Using function_name as-is: rgb_to_yuv420
+2025-07-22 19:18:20,225 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,225 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,226 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,226 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,226 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,226 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,226 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,226 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,226 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,226 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,227 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,227 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,227 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,227 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,227 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,227 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,227 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,228 - MainThread - INFO - Removing problematic import: from your_module import ['rgb_to_yuv420']
+2025-07-22 19:18:20,228 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/color/test_this_rgb_to_yuv420.py
+2025-07-22 19:18:20,228 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/color/test_this_rgb_to_yuv420.py --color=no --cache-clear -v -s"
+2025-07-22 19:18:29,549 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:18:29,549 - MainThread - INFO - Completed task DLBench/123
+2025-07-22 19:18:29,656 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:18:29,665 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:18:29,669 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,669 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,669 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,669 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,669 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,669 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,670 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,670 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,670 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,670 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,670 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,670 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,670 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,670 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,670 - MainThread - INFO - Removing problematic import: from your_module import ['DiceLoss']
+2025-07-22 19:18:29,671 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/losses/test_this_forward.py
+2025-07-22 19:18:29,671 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/losses/test_this_forward.py --color=no --cache-clear -v -s"
+2025-07-22 19:18:39,937 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:18:39,937 - MainThread - INFO - Completed task DLBench/131
+2025-07-22 19:18:40,057 - MainThread - INFO - Using function_name as-is: inverse_transform
+2025-07-22 19:18:40,065 - MainThread - INFO - Using function_name as-is: inverse_transform
+2025-07-22 19:18:40,068 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,068 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,068 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,068 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,069 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,069 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,069 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,069 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,069 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,069 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,069 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,069 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,069 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,070 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,070 - MainThread - INFO - Removing problematic import: from your_module import ['YourClass']
+2025-07-22 19:18:40,070 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this_inverse_transform.py
+2025-07-22 19:18:40,070 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this_inverse_transform.py --color=no --cache-clear -v -s"
+2025-07-22 19:18:49,132 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:18:49,132 - MainThread - INFO - Completed task DLBench/132
+2025-07-22 19:18:49,200 - MainThread - INFO - Using function_name as-is: total_variation
+2025-07-22 19:18:49,200 - MainThread - INFO - Using function_name as-is: total_variation
+2025-07-22 19:18:49,204 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/losses/test_this_total_variation.py
+2025-07-22 19:18:49,204 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/losses/test_this_total_variation.py --color=no --cache-clear -v -s"
+2025-07-22 19:18:58,384 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:18:58,384 - MainThread - INFO - Completed task DLBench/133
+2025-07-22 19:18:58,489 - MainThread - INFO - Using function_name as-is: normalize_transformation
+2025-07-22 19:18:58,489 - MainThread - INFO - Using function_name as-is: normalize_transformation
+2025-07-22 19:18:58,494 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_normalize_transformation.py
+2025-07-22 19:18:58,495 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_normalize_transformation.py --color=no --cache-clear -v -s"
+2025-07-22 19:19:07,402 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:19:07,402 - MainThread - INFO - Completed task DLBench/139
+2025-07-22 19:19:07,526 - MainThread - INFO - Using function_name as-is: get_sobel_kernel2d
+2025-07-22 19:19:07,526 - MainThread - INFO - Using function_name as-is: get_sobel_kernel2d
+2025-07-22 19:19:07,534 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/filters/test_this_get_sobel_kernel2d.py
+2025-07-22 19:19:07,535 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/filters/test_this_get_sobel_kernel2d.py --color=no --cache-clear -v -s"
+2025-07-22 19:19:16,448 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:19:16,448 - MainThread - INFO - Completed task DLBench/140
+2025-07-22 19:19:16,607 - MainThread - INFO - Using function_name as-is: extract_patches_from_pyramid
+2025-07-22 19:19:16,607 - MainThread - INFO - Using function_name as-is: extract_patches_from_pyramid
+2025-07-22 19:19:16,613 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/test_this_extract_patches_from_pyramid.py
+2025-07-22 19:19:16,614 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/test_this_extract_patches_from_pyramid.py --color=no --cache-clear -v -s"
+2025-07-22 19:19:24,906 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:19:24,907 - MainThread - INFO - Completed task DLBench/141
+2025-07-22 19:19:24,964 - MainThread - INFO - Using function_name as-is: unproject_points
+2025-07-22 19:19:24,965 - MainThread - INFO - Using function_name as-is: unproject_points
+2025-07-22 19:19:24,967 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/camera/test_this_unproject_points.py
+2025-07-22 19:19:24,967 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/camera/test_this_unproject_points.py --color=no --cache-clear -v -s"
+2025-07-22 19:19:29,009 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:19:29,009 - MainThread - INFO - Completed task DLBench/145
+2025-07-22 19:19:29,057 - MainThread - INFO - Using function_name as-is: project_points_z1
+2025-07-22 19:19:29,058 - MainThread - INFO - Using function_name as-is: project_points_z1
+2025-07-22 19:19:29,060 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/camera/test_this_project_points_z1.py
+2025-07-22 19:19:29,060 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/camera/test_this_project_points_z1.py --color=no --cache-clear -v -s"
+2025-07-22 19:19:33,227 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:19:33,227 - MainThread - INFO - Completed task DLBench/154
+2025-07-22 19:19:33,273 - MainThread - INFO - Using function_name as-is: draw_line
+2025-07-22 19:19:33,275 - MainThread - INFO - Using function_name as-is: draw_line
+2025-07-22 19:19:33,278 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/utils/test_this_draw_line.py
+2025-07-22 19:19:33,278 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/utils/test_this_draw_line.py --color=no --cache-clear -v -s"
+2025-07-22 19:19:37,417 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:19:37,417 - MainThread - INFO - Completed task DLBench/155
+2025-07-22 19:19:37,473 - MainThread - INFO - Using function_name as-is: _jpeg_decode
+2025-07-22 19:19:37,475 - MainThread - INFO - Using function_name as-is: _jpeg_decode
+2025-07-22 19:19:37,477 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this__jpeg_decode.py
+2025-07-22 19:19:37,477 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this__jpeg_decode.py --color=no --cache-clear -v -s"
+2025-07-22 19:19:41,586 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:19:41,586 - MainThread - INFO - Completed task DLBench/156
+2025-07-22 19:19:41,644 - MainThread - INFO - Using function_name as-is: normal_transform_pixel3d
+2025-07-22 19:19:41,644 - MainThread - INFO - Using function_name as-is: normal_transform_pixel3d
+2025-07-22 19:19:41,647 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_normal_transform_pixel3d.py
+2025-07-22 19:19:41,647 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_normal_transform_pixel3d.py --color=no --cache-clear -v -s"
+2025-07-22 19:19:45,667 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:19:45,667 - MainThread - INFO - Completed task DLBench/160
+2025-07-22 19:19:45,719 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:19:45,720 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:19:45,722 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,722 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,722 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,722 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,722 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,722 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,722 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,723 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,723 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,723 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,723 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,723 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,723 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,723 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:19:45,723 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/augmentation/_2d/intensity/test_this_apply_transform.py
+2025-07-22 19:19:45,724 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/augmentation/_2d/intensity/test_this_apply_transform.py --color=no --cache-clear -v -s"
+2025-07-22 19:19:50,113 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:19:50,113 - MainThread - INFO - Completed task DLBench/162
+2025-07-22 19:19:50,157 - MainThread - INFO - Using function_name as-is: quaternion_exp_to_log
+2025-07-22 19:19:50,157 - MainThread - INFO - Using function_name as-is: quaternion_exp_to_log
+2025-07-22 19:19:50,160 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_quaternion_exp_to_log.py
+2025-07-22 19:19:50,160 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_quaternion_exp_to_log.py --color=no --cache-clear -v -s"
+2025-07-22 19:19:54,334 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:19:54,335 - MainThread - INFO - Completed task DLBench/164
+2025-07-22 19:19:54,389 - MainThread - INFO - Using function_name as-is: run_7point
+2025-07-22 19:19:54,389 - MainThread - INFO - Using function_name as-is: run_7point
+2025-07-22 19:19:54,392 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_run_7point.py
+2025-07-22 19:19:54,392 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_run_7point.py --color=no --cache-clear -v -s"
+2025-07-22 19:19:58,515 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:19:58,515 - MainThread - INFO - Completed task DLBench/168
+2025-07-22 19:19:58,559 - MainThread - INFO - Using function_name as-is: set_laf_orientation
+2025-07-22 19:19:58,559 - MainThread - INFO - Using function_name as-is: set_laf_orientation
+2025-07-22 19:19:58,562 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/test_this_set_laf_orientation.py
+2025-07-22 19:19:58,562 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/test_this_set_laf_orientation.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:02,655 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:02,655 - MainThread - INFO - Completed task DLBench/177
+2025-07-22 19:20:02,705 - MainThread - INFO - Using function_name as-is: matrix_cofactor_tensor
+2025-07-22 19:20:02,706 - MainThread - INFO - Using function_name as-is: matrix_cofactor_tensor
+2025-07-22 19:20:02,710 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_matrix_cofactor_tensor.py
+2025-07-22 19:20:02,710 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_matrix_cofactor_tensor.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:06,795 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:06,796 - MainThread - INFO - Completed task DLBench/179
+2025-07-22 19:20:06,836 - MainThread - INFO - Using function_name as-is: aepe
+2025-07-22 19:20:06,836 - MainThread - INFO - Using function_name as-is: aepe
+2025-07-22 19:20:06,838 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/metrics/test_this_aepe.py
+2025-07-22 19:20:06,839 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/metrics/test_this_aepe.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:10,928 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:10,928 - MainThread - INFO - Completed task DLBench/180
+2025-07-22 19:20:10,967 - MainThread - INFO - Using function_name as-is: rgb_to_grayscale
+2025-07-22 19:20:10,967 - MainThread - INFO - Using function_name as-is: rgb_to_grayscale
+2025-07-22 19:20:10,969 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/color/test_this_rgb_to_grayscale.py
+2025-07-22 19:20:10,969 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/color/test_this_rgb_to_grayscale.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:15,104 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:15,104 - MainThread - INFO - Completed task DLBench/181
+2025-07-22 19:20:15,151 - MainThread - INFO - Using function_name as-is: convert_points_from_homogeneous
+2025-07-22 19:20:15,151 - MainThread - INFO - Using function_name as-is: convert_points_from_homogeneous
+2025-07-22 19:20:15,153 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_convert_points_from_homogeneous.py
+2025-07-22 19:20:15,153 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_convert_points_from_homogeneous.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:19,270 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:19,270 - MainThread - INFO - Completed task DLBench/183
+2025-07-22 19:20:19,315 - MainThread - INFO - Using function_name as-is: laf_from_three_points
+2025-07-22 19:20:19,315 - MainThread - INFO - Using function_name as-is: laf_from_three_points
+2025-07-22 19:20:19,317 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/test_this_laf_from_three_points.py
+2025-07-22 19:20:19,317 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/test_this_laf_from_three_points.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:23,427 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:23,428 - MainThread - INFO - Completed task DLBench/188
+2025-07-22 19:20:23,464 - MainThread - INFO - Using function_name as-is: _compute_tiles
+2025-07-22 19:20:23,465 - MainThread - INFO - Using function_name as-is: _compute_tiles
+2025-07-22 19:20:23,467 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this__compute_tiles.py
+2025-07-22 19:20:23,467 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this__compute_tiles.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:27,592 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:27,592 - MainThread - INFO - Completed task DLBench/189
+2025-07-22 19:20:27,646 - MainThread - INFO - Using function_name as-is: _jpeg_encode
+2025-07-22 19:20:27,647 - MainThread - INFO - Using function_name as-is: _jpeg_encode
+2025-07-22 19:20:27,649 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this__jpeg_encode.py
+2025-07-22 19:20:27,649 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this__jpeg_encode.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:32,016 - MainThread - WARNING - No clear result found for test test_basic, marking as failed
+2025-07-22 19:20:32,016 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:32,016 - MainThread - INFO - Completed task DLBench/192
+2025-07-22 19:20:32,070 - MainThread - INFO - Using function_name as-is: __init__
+2025-07-22 19:20:32,070 - MainThread - INFO - Using function_name as-is: __init__
+2025-07-22 19:20:32,072 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,072 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,072 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Removing problematic import: from your_module import ['Normalize']
+2025-07-22 19:20:32,073 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this___init__.py
+2025-07-22 19:20:32,074 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this___init__.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:36,128 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:36,129 - MainThread - INFO - Completed task DLBench/200
+2025-07-22 19:20:36,184 - MainThread - INFO - Using function_name as-is: _load_image_to_tensor
+2025-07-22 19:20:36,185 - MainThread - INFO - Using function_name as-is: _load_image_to_tensor
+2025-07-22 19:20:36,188 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/io/test_this__load_image_to_tensor.py
+2025-07-22 19:20:36,188 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/io/test_this__load_image_to_tensor.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:40,257 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:40,257 - MainThread - INFO - Completed task DLBench/201
+2025-07-22 19:20:40,310 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:20:40,312 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:20:40,314 - MainThread - INFO - Removing problematic import: from your_module import ['RandomHue']
+2025-07-22 19:20:40,314 - MainThread - INFO - Removing problematic import: from your_module import ['RandomHue']
+2025-07-22 19:20:40,314 - MainThread - INFO - Removing problematic import: from your_module import ['RandomHue']
+2025-07-22 19:20:40,314 - MainThread - INFO - Removing problematic import: from your_module import ['RandomHue']
+2025-07-22 19:20:40,314 - MainThread - INFO - Removing problematic import: from your_module import ['RandomHue']
+2025-07-22 19:20:40,314 - MainThread - INFO - Removing problematic import: from your_module import ['RandomHue']
+2025-07-22 19:20:40,314 - MainThread - INFO - Removing problematic import: from your_module import ['RandomHue']
+2025-07-22 19:20:40,314 - MainThread - INFO - Removing problematic import: from your_module import ['RandomHue']
+2025-07-22 19:20:40,314 - MainThread - INFO - Removing problematic import: from your_module import ['RandomHue']
+2025-07-22 19:20:40,314 - MainThread - INFO - Removing problematic import: from your_module import ['RandomHue']
+2025-07-22 19:20:40,314 - MainThread - INFO - Removing problematic import: from your_module import ['RandomHue']
+2025-07-22 19:20:40,314 - MainThread - INFO - Removing problematic import: from your_module import ['RandomHue']
+2025-07-22 19:20:40,314 - MainThread - INFO - Removing problematic import: from your_module import ['RandomHue']
+2025-07-22 19:20:40,315 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/augmentation/_2d/intensity/test_this_apply_transform.py
+2025-07-22 19:20:40,315 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/augmentation/_2d/intensity/test_this_apply_transform.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:44,774 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:44,774 - MainThread - INFO - Completed task DLBench/202
+2025-07-22 19:20:44,825 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:20:44,826 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:20:44,828 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/transform/test_this_forward.py
+2025-07-22 19:20:44,828 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/transform/test_this_forward.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:49,352 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:49,352 - MainThread - INFO - Completed task DLBench/205
+2025-07-22 19:20:49,415 - MainThread - INFO - Using function_name as-is: yuv420_to_rgb
+2025-07-22 19:20:49,416 - MainThread - INFO - Using function_name as-is: yuv420_to_rgb
+2025-07-22 19:20:49,418 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/color/test_this_yuv420_to_rgb.py
+2025-07-22 19:20:49,418 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/color/test_this_yuv420_to_rgb.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:53,529 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:53,530 - MainThread - INFO - Completed task DLBench/222
+2025-07-22 19:20:53,582 - MainThread - INFO - Using function_name as-is: get_perspective_transform
+2025-07-22 19:20:53,582 - MainThread - INFO - Using function_name as-is: get_perspective_transform
+2025-07-22 19:20:53,585 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/transform/test_this_get_perspective_transform.py
+2025-07-22 19:20:53,585 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/transform/test_this_get_perspective_transform.py --color=no --cache-clear -v -s"
+2025-07-22 19:20:57,736 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:20:57,737 - MainThread - INFO - Completed task DLBench/227
+2025-07-22 19:20:57,804 - MainThread - INFO - Using function_name as-is: _compute_projection
+2025-07-22 19:20:57,804 - MainThread - INFO - Using function_name as-is: _compute_projection
+2025-07-22 19:20:57,806 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:20:57,806 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:20:57,806 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:20:57,806 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:20:57,806 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:20:57,806 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:20:57,806 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this__compute_projection.py
+2025-07-22 19:20:57,806 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this__compute_projection.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:01,838 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:01,838 - MainThread - INFO - Completed task DLBench/231
+2025-07-22 19:21:01,895 - MainThread - INFO - Using function_name as-is: get_sobel_kernel2d_2nd_order
+2025-07-22 19:21:01,895 - MainThread - INFO - Using function_name as-is: get_sobel_kernel2d_2nd_order
+2025-07-22 19:21:01,897 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/filters/test_this_get_sobel_kernel2d_2nd_order.py
+2025-07-22 19:21:01,897 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/filters/test_this_get_sobel_kernel2d_2nd_order.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:05,982 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:05,982 - MainThread - INFO - Completed task DLBench/233
+2025-07-22 19:21:06,030 - MainThread - INFO - Using function_name as-is: project_points_orthographic
+2025-07-22 19:21:06,031 - MainThread - INFO - Using function_name as-is: project_points_orthographic
+2025-07-22 19:21:06,033 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/camera/test_this_project_points_orthographic.py
+2025-07-22 19:21:06,033 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/camera/test_this_project_points_orthographic.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:10,086 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:10,087 - MainThread - INFO - Completed task DLBench/234
+2025-07-22 19:21:10,147 - MainThread - INFO - Using function_name as-is: shift_rgb
+2025-07-22 19:21:10,148 - MainThread - INFO - Using function_name as-is: shift_rgb
+2025-07-22 19:21:10,152 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this_shift_rgb.py
+2025-07-22 19:21:10,152 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this_shift_rgb.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:14,227 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:14,227 - MainThread - INFO - Completed task DLBench/237
+2025-07-22 19:21:14,274 - MainThread - INFO - Using function_name as-is: rescale
+2025-07-22 19:21:14,274 - MainThread - INFO - Using function_name as-is: rescale
+2025-07-22 19:21:14,277 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/transform/test_this_rescale.py
+2025-07-22 19:21:14,277 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/transform/test_this_rescale.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:18,634 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:18,634 - MainThread - INFO - Completed task DLBench/242
+2025-07-22 19:21:18,690 - MainThread - INFO - Using function_name as-is: apply_transform_mask
+2025-07-22 19:21:18,691 - MainThread - INFO - Using function_name as-is: apply_transform_mask
+2025-07-22 19:21:18,692 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:21:18,693 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:21:18,693 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:21:18,693 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:21:18,693 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:21:18,693 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:21:18,693 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:21:18,693 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:21:18,693 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:21:18,693 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:21:18,693 - MainThread - INFO - Removing problematic import: from your_module import ['RandomErasing']
+2025-07-22 19:21:18,693 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/augmentation/_2d/intensity/test_this_apply_transform_mask.py
+2025-07-22 19:21:18,693 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/augmentation/_2d/intensity/test_this_apply_transform_mask.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:22,958 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:22,958 - MainThread - INFO - Completed task DLBench/251
+2025-07-22 19:21:23,008 - MainThread - INFO - Using function_name as-is: through
+2025-07-22 19:21:23,009 - MainThread - INFO - Using function_name as-is: through
+2025-07-22 19:21:23,012 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_through.py
+2025-07-22 19:21:23,012 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_through.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:27,035 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:27,035 - MainThread - INFO - Completed task DLBench/255
+2025-07-22 19:21:27,095 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:21:27,096 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:21:27,098 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/augmentation/_2d/intensity/test_this_apply_transform.py
+2025-07-22 19:21:27,098 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/augmentation/_2d/intensity/test_this_apply_transform.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:31,186 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:31,186 - MainThread - INFO - Completed task DLBench/257
+2025-07-22 19:21:31,236 - MainThread - INFO - Using function_name as-is: fit
+2025-07-22 19:21:31,236 - MainThread - INFO - Using function_name as-is: fit
+2025-07-22 19:21:31,239 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this_fit.py
+2025-07-22 19:21:31,239 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this_fit.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:35,292 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:35,292 - MainThread - INFO - Completed task DLBench/260
+2025-07-22 19:21:35,365 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:21:35,365 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:21:35,369 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/transform/test_this_forward.py
+2025-07-22 19:21:35,369 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/transform/test_this_forward.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:39,673 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:39,673 - MainThread - INFO - Completed task DLBench/263
+2025-07-22 19:21:39,728 - MainThread - INFO - Using function_name as-is: remap
+2025-07-22 19:21:39,728 - MainThread - INFO - Using function_name as-is: remap
+2025-07-22 19:21:39,731 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/transform/test_this_remap.py
+2025-07-22 19:21:39,731 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/transform/test_this_remap.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:43,785 - MainThread - WARNING - No clear result found for test test_basic, marking as failed
+2025-07-22 19:21:43,786 - MainThread - WARNING - No clear result found for test test_mode, marking as failed
+2025-07-22 19:21:43,786 - MainThread - WARNING - No clear result found for test test_padding_mode, marking as failed
+2025-07-22 19:21:43,786 - MainThread - WARNING - No clear result found for test test_normalized_coordinates, marking as failed
+2025-07-22 19:21:43,786 - MainThread - WARNING - No clear result found for test test_batch_consistency, marking as failed
+2025-07-22 19:21:43,786 - MainThread - WARNING - No clear result found for test test_large_input, marking as failed
+2025-07-22 19:21:43,786 - MainThread - WARNING - No clear result found for test test_single_channel_image, marking as failed
+2025-07-22 19:21:43,786 - MainThread - WARNING - No clear result found for test test_zeros_map, marking as failed
+2025-07-22 19:21:43,786 - MainThread - WARNING - No clear result found for test test_out_of_bounds_map, marking as failed
+2025-07-22 19:21:43,786 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:43,786 - MainThread - INFO - Completed task DLBench/265
+2025-07-22 19:21:43,842 - MainThread - INFO - Using function_name as-is: js_div_loss_2d
+2025-07-22 19:21:43,844 - MainThread - INFO - Using function_name as-is: js_div_loss_2d
+2025-07-22 19:21:43,846 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/losses/test_this_js_div_loss_2d.py
+2025-07-22 19:21:43,846 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/losses/test_this_js_div_loss_2d.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:47,945 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:47,945 - MainThread - INFO - Completed task DLBench/269
+2025-07-22 19:21:48,003 - MainThread - INFO - Using function_name as-is: unproject
+2025-07-22 19:21:48,003 - MainThread - INFO - Using function_name as-is: unproject
+2025-07-22 19:21:48,006 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/camera/test_this_unproject.py
+2025-07-22 19:21:48,006 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/camera/test_this_unproject.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:52,236 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:52,237 - MainThread - INFO - Completed task DLBench/273
+2025-07-22 19:21:52,294 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:21:52,295 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:21:52,298 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/test_this_forward.py
+2025-07-22 19:21:52,298 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/test_this_forward.py --color=no --cache-clear -v -s"
+2025-07-22 19:21:58,132 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:21:58,133 - MainThread - INFO - Completed task DLBench/278
+2025-07-22 19:21:58,179 - MainThread - INFO - Using function_name as-is: _cdist
+2025-07-22 19:21:58,180 - MainThread - INFO - Using function_name as-is: _cdist
+2025-07-22 19:21:58,182 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/test_this__cdist.py
+2025-07-22 19:21:58,182 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/test_this__cdist.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:01,988 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:01,988 - MainThread - INFO - Completed task DLBench/279
+2025-07-22 19:22:02,046 - MainThread - INFO - Using function_name as-is: filter3d
+2025-07-22 19:22:02,047 - MainThread - INFO - Using function_name as-is: filter3d
+2025-07-22 19:22:02,050 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/filters/test_this_filter3d.py
+2025-07-22 19:22:02,050 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/filters/test_this_filter3d.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:06,300 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:06,300 - MainThread - INFO - Completed task DLBench/280
+2025-07-22 19:22:06,362 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:22:06,364 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:22:06,366 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,366 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,366 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,366 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,366 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,366 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,366 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,366 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,366 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,367 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,367 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,367 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,367 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,367 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,367 - MainThread - INFO - Removing problematic import: from your_module import ['LovaszSoftmaxLoss']
+2025-07-22 19:22:06,367 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/losses/test_this_forward.py
+2025-07-22 19:22:06,367 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/losses/test_this_forward.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:10,921 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:10,922 - MainThread - INFO - Completed task DLBench/282
+2025-07-22 19:22:10,971 - MainThread - INFO - Using function_name as-is: _perform_padding
+2025-07-22 19:22:10,972 - MainThread - INFO - Using function_name as-is: _perform_padding
+2025-07-22 19:22:10,974 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this__perform_padding.py
+2025-07-22 19:22:10,974 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this__perform_padding.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:15,082 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:15,082 - MainThread - INFO - Completed task DLBench/283
+2025-07-22 19:22:15,148 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:22:15,149 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:22:15,151 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,151 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,151 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,151 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,151 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,152 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,152 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,152 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,152 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,152 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,152 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,152 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,152 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,152 - MainThread - INFO - Removing problematic import: from your_module import ['ColorJiggle']
+2025-07-22 19:22:15,152 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/augmentation/_2d/intensity/test_this_apply_transform.py
+2025-07-22 19:22:15,152 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/augmentation/_2d/intensity/test_this_apply_transform.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:19,848 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:19,849 - MainThread - INFO - Completed task DLBench/287
+2025-07-22 19:22:19,905 - MainThread - INFO - Using function_name as-is: left_jacobian
+2025-07-22 19:22:19,905 - MainThread - INFO - Using function_name as-is: left_jacobian
+2025-07-22 19:22:19,907 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/liegroup/test_this_left_jacobian.py
+2025-07-22 19:22:19,907 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/liegroup/test_this_left_jacobian.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:24,047 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:24,047 - MainThread - INFO - Completed task DLBench/292
+2025-07-22 19:22:24,104 - MainThread - INFO - Using function_name as-is: sample_is_valid_for_homography
+2025-07-22 19:22:24,105 - MainThread - INFO - Using function_name as-is: sample_is_valid_for_homography
+2025-07-22 19:22:24,107 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_sample_is_valid_for_homography.py
+2025-07-22 19:22:24,107 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_sample_is_valid_for_homography.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:28,175 - MainThread - WARNING - No clear result found for test test_basic, marking as failed
+2025-07-22 19:22:28,175 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:28,176 - MainThread - INFO - Completed task DLBench/297
+2025-07-22 19:22:28,238 - MainThread - INFO - Using function_name as-is: differentiable_clipping
+2025-07-22 19:22:28,238 - MainThread - INFO - Using function_name as-is: differentiable_clipping
+2025-07-22 19:22:28,241 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/utils/test_this_differentiable_clipping.py
+2025-07-22 19:22:28,241 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/utils/test_this_differentiable_clipping.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:32,272 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:32,272 - MainThread - INFO - Completed task DLBench/298
+2025-07-22 19:22:32,328 - MainThread - INFO - Using function_name as-is: precrop_padding
+2025-07-22 19:22:32,330 - MainThread - INFO - Using function_name as-is: precrop_padding
+2025-07-22 19:22:32,332 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/augmentation/_3d/geometric/test_this_precrop_padding.py
+2025-07-22 19:22:32,332 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/augmentation/_3d/geometric/test_this_precrop_padding.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:36,403 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:36,403 - MainThread - INFO - Completed task DLBench/299
+2025-07-22 19:22:36,461 - MainThread - INFO - Using function_name as-is: create_meshgrid
+2025-07-22 19:22:36,463 - MainThread - INFO - Using function_name as-is: create_meshgrid
+2025-07-22 19:22:36,466 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/utils/test_this_create_meshgrid.py
+2025-07-22 19:22:36,466 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/utils/test_this_create_meshgrid.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:40,440 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:40,440 - MainThread - INFO - Completed task DLBench/300
+2025-07-22 19:22:40,492 - MainThread - INFO - Using function_name as-is: canny
+2025-07-22 19:22:40,493 - MainThread - INFO - Using function_name as-is: canny
+2025-07-22 19:22:40,496 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/filters/test_this_canny.py
+2025-07-22 19:22:40,496 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/filters/test_this_canny.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:45,033 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:45,034 - MainThread - INFO - Completed task DLBench/314
+2025-07-22 19:22:45,079 - MainThread - INFO - Using function_name as-is: normal_transform_pixel
+2025-07-22 19:22:45,079 - MainThread - INFO - Using function_name as-is: normal_transform_pixel
+2025-07-22 19:22:45,081 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_normal_transform_pixel.py
+2025-07-22 19:22:45,081 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_normal_transform_pixel.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:49,173 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:49,173 - MainThread - INFO - Completed task DLBench/317
+2025-07-22 19:22:49,241 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:22:49,242 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:22:49,245 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/augmentation/_2d/intensity/test_this_apply_transform.py
+2025-07-22 19:22:49,245 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/augmentation/_2d/intensity/test_this_apply_transform.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:53,322 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:53,322 - MainThread - INFO - Completed task DLBench/322
+2025-07-22 19:22:53,374 - MainThread - INFO - Using function_name as-is: projections_from_fundamental
+2025-07-22 19:22:53,374 - MainThread - INFO - Using function_name as-is: projections_from_fundamental
+2025-07-22 19:22:53,376 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_projections_from_fundamental.py
+2025-07-22 19:22:53,376 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_projections_from_fundamental.py --color=no --cache-clear -v -s"
+2025-07-22 19:22:57,477 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:22:57,477 - MainThread - INFO - Completed task DLBench/324
+2025-07-22 19:22:57,544 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:22:57,544 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:22:57,547 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this_forward.py
+2025-07-22 19:22:57,547 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this_forward.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:01,597 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:01,597 - MainThread - INFO - Completed task DLBench/333
+2025-07-22 19:23:01,659 - MainThread - INFO - Using function_name as-is: laf_from_center_scale_ori
+2025-07-22 19:23:01,659 - MainThread - INFO - Using function_name as-is: laf_from_center_scale_ori
+2025-07-22 19:23:01,662 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/test_this_laf_from_center_scale_ori.py
+2025-07-22 19:23:01,662 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/test_this_laf_from_center_scale_ori.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:05,747 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:05,747 - MainThread - INFO - Completed task DLBench/341
+2025-07-22 19:23:05,815 - MainThread - INFO - Using function_name as-is: scale_intrinsics
+2025-07-22 19:23:05,815 - MainThread - INFO - Using function_name as-is: scale_intrinsics
+2025-07-22 19:23:05,818 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_scale_intrinsics.py
+2025-07-22 19:23:05,818 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_scale_intrinsics.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:09,851 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:09,851 - MainThread - INFO - Completed task DLBench/342
+2025-07-22 19:23:09,909 - MainThread - INFO - Using function_name as-is: filter2d
+2025-07-22 19:23:09,909 - MainThread - INFO - Using function_name as-is: filter2d
+2025-07-22 19:23:09,911 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/filters/test_this_filter2d.py
+2025-07-22 19:23:09,912 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/filters/test_this_filter2d.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:14,011 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:14,011 - MainThread - INFO - Completed task DLBench/346
+2025-07-22 19:23:14,075 - MainThread - INFO - Using function_name as-is: unproject_points_orthographic
+2025-07-22 19:23:14,075 - MainThread - INFO - Using function_name as-is: unproject_points_orthographic
+2025-07-22 19:23:14,077 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/camera/test_this_unproject_points_orthographic.py
+2025-07-22 19:23:14,077 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/camera/test_this_unproject_points_orthographic.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:18,102 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:18,103 - MainThread - INFO - Completed task DLBench/347
+2025-07-22 19:23:18,163 - MainThread - INFO - Using function_name as-is: scale
+2025-07-22 19:23:18,163 - MainThread - INFO - Using function_name as-is: scale
+2025-07-22 19:23:18,165 - MainThread - INFO - Removing problematic import: from your_module import ['PinholeCamera']
+2025-07-22 19:23:18,165 - MainThread - INFO - Removing problematic import: from your_module import ['PinholeCamera']
+2025-07-22 19:23:18,165 - MainThread - INFO - Removing problematic import: from your_module import ['PinholeCamera']
+2025-07-22 19:23:18,165 - MainThread - INFO - Removing problematic import: from your_module import ['PinholeCamera']
+2025-07-22 19:23:18,165 - MainThread - INFO - Removing problematic import: from your_module import ['PinholeCamera']
+2025-07-22 19:23:18,165 - MainThread - INFO - Removing problematic import: from your_module import ['PinholeCamera']
+2025-07-22 19:23:18,165 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/camera/test_this_scale.py
+2025-07-22 19:23:18,165 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/camera/test_this_scale.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:22,170 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:22,171 - MainThread - INFO - Completed task DLBench/348
+2025-07-22 19:23:22,227 - MainThread - INFO - Using function_name as-is: spatial_gradient
+2025-07-22 19:23:22,228 - MainThread - INFO - Using function_name as-is: spatial_gradient
+2025-07-22 19:23:22,230 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/filters/test_this_spatial_gradient.py
+2025-07-22 19:23:22,231 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/filters/test_this_spatial_gradient.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:26,320 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:26,320 - MainThread - INFO - Completed task DLBench/352
+2025-07-22 19:23:26,379 - MainThread - INFO - Using function_name as-is: translation_vector
+2025-07-22 19:23:26,379 - MainThread - INFO - Using function_name as-is: translation_vector
+2025-07-22 19:23:26,381 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/camera/test_this_translation_vector.py
+2025-07-22 19:23:26,381 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/camera/test_this_translation_vector.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:30,407 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:30,407 - MainThread - INFO - Completed task DLBench/355
+2025-07-22 19:23:30,472 - MainThread - INFO - Using function_name as-is: apply_transfrom
+2025-07-22 19:23:30,472 - MainThread - INFO - Using function_name as-is: apply_transfrom
+2025-07-22 19:23:30,475 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/augmentation/_3d/geometric/test_this_apply_transfrom.py
+2025-07-22 19:23:30,475 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/augmentation/_3d/geometric/test_this_apply_transfrom.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:34,552 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:34,552 - MainThread - INFO - Completed task DLBench/365
+2025-07-22 19:23:34,605 - MainThread - INFO - Using function_name as-is: resize
+2025-07-22 19:23:34,605 - MainThread - INFO - Using function_name as-is: resize
+2025-07-22 19:23:34,608 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/transform/test_this_resize.py
+2025-07-22 19:23:34,608 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/transform/test_this_resize.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:39,375 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:39,375 - MainThread - INFO - Completed task DLBench/366
+2025-07-22 19:23:39,443 - MainThread - INFO - Using function_name as-is: draw_point2d
+2025-07-22 19:23:39,443 - MainThread - INFO - Using function_name as-is: draw_point2d
+2025-07-22 19:23:39,446 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/utils/test_this_draw_point2d.py
+2025-07-22 19:23:39,446 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/utils/test_this_draw_point2d.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:43,540 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:43,540 - MainThread - INFO - Completed task DLBench/367
+2025-07-22 19:23:43,598 - MainThread - INFO - Using function_name as-is: _torch_svd_cast
+2025-07-22 19:23:43,598 - MainThread - INFO - Using function_name as-is: _torch_svd_cast
+2025-07-22 19:23:43,600 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/utils/test_this__torch_svd_cast.py
+2025-07-22 19:23:43,600 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/utils/test_this__torch_svd_cast.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:47,677 - MainThread - WARNING - No clear result found for test test_complex_tensor, marking as failed
+2025-07-22 19:23:47,678 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:47,678 - MainThread - INFO - Completed task DLBench/372
+2025-07-22 19:23:47,744 - MainThread - INFO - Using function_name as-is: unproject_points_z1
+2025-07-22 19:23:47,744 - MainThread - INFO - Using function_name as-is: unproject_points_z1
+2025-07-22 19:23:47,746 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/camera/test_this_unproject_points_z1.py
+2025-07-22 19:23:47,746 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/camera/test_this_unproject_points_z1.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:51,843 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:51,843 - MainThread - INFO - Completed task DLBench/374
+2025-07-22 19:23:51,910 - MainThread - INFO - Using function_name as-is: scale_laf
+2025-07-22 19:23:51,911 - MainThread - INFO - Using function_name as-is: scale_laf
+2025-07-22 19:23:51,913 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/test_this_scale_laf.py
+2025-07-22 19:23:51,913 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/test_this_scale_laf.py --color=no --cache-clear -v -s"
+2025-07-22 19:23:55,928 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:23:55,928 - MainThread - INFO - Completed task DLBench/375
+2025-07-22 19:23:55,991 - MainThread - INFO - Using function_name as-is: run_5point
+2025-07-22 19:23:55,992 - MainThread - INFO - Using function_name as-is: run_5point
+2025-07-22 19:23:55,994 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_run_5point.py
+2025-07-22 19:23:55,994 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_run_5point.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:00,603 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:00,603 - MainThread - INFO - Completed task DLBench/376
+2025-07-22 19:24:00,681 - MainThread - INFO - Using function_name as-is: backward
+2025-07-22 19:24:00,682 - MainThread - INFO - Using function_name as-is: backward
+2025-07-22 19:24:00,685 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/grad_estimator/test_this_backward.py
+2025-07-22 19:24:00,685 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/grad_estimator/test_this_backward.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:04,857 - MainThread - WARNING - No clear result found for test test_backward_grad_check, marking as failed
+2025-07-22 19:24:04,858 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:04,858 - MainThread - INFO - Completed task DLBench/383
+2025-07-22 19:24:04,927 - MainThread - INFO - Using function_name as-is: compute_transformation
+2025-07-22 19:24:04,927 - MainThread - INFO - Using function_name as-is: compute_transformation
+2025-07-22 19:24:04,929 - MainThread - INFO - Removing problematic import: from your_module import ['RandomCrop3D']
+2025-07-22 19:24:04,929 - MainThread - INFO - Removing problematic import: from your_module import ['RandomCrop3D']
+2025-07-22 19:24:04,929 - MainThread - INFO - Removing problematic import: from your_module import ['RandomCrop3D']
+2025-07-22 19:24:04,929 - MainThread - INFO - Removing problematic import: from your_module import ['RandomCrop3D']
+2025-07-22 19:24:04,929 - MainThread - INFO - Removing problematic import: from your_module import ['RandomCrop3D']
+2025-07-22 19:24:04,929 - MainThread - INFO - Removing problematic import: from your_module import ['RandomCrop3D']
+2025-07-22 19:24:04,930 - MainThread - INFO - Removing problematic import: from your_module import ['RandomCrop3D']
+2025-07-22 19:24:04,930 - MainThread - INFO - Removing problematic import: from your_module import ['RandomCrop3D']
+2025-07-22 19:24:04,930 - MainThread - INFO - Removing problematic import: from your_module import ['RandomCrop3D']
+2025-07-22 19:24:04,930 - MainThread - INFO - Removing problematic import: from your_module import ['RandomCrop3D']
+2025-07-22 19:24:04,930 - MainThread - INFO - Removing problematic import: from your_module import ['RandomCrop3D']
+2025-07-22 19:24:04,930 - MainThread - INFO - Removing problematic import: from your_module import ['RandomCrop3D']
+2025-07-22 19:24:04,930 - MainThread - INFO - Removing problematic import: from your_module import ['RandomCrop3D']
+2025-07-22 19:24:04,930 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/augmentation/_3d/geometric/test_this_compute_transformation.py
+2025-07-22 19:24:04,930 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/augmentation/_3d/geometric/test_this_compute_transformation.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:09,012 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:09,012 - MainThread - INFO - Completed task DLBench/386
+2025-07-22 19:24:09,086 - MainThread - INFO - Using function_name as-is: kl_div_loss_2d
+2025-07-22 19:24:09,086 - MainThread - INFO - Using function_name as-is: kl_div_loss_2d
+2025-07-22 19:24:09,089 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/losses/test_this_kl_div_loss_2d.py
+2025-07-22 19:24:09,089 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/losses/test_this_kl_div_loss_2d.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:13,306 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:13,306 - MainThread - INFO - Completed task DLBench/387
+2025-07-22 19:24:13,367 - MainThread - INFO - Using function_name as-is: zca_mean
+2025-07-22 19:24:13,367 - MainThread - INFO - Using function_name as-is: zca_mean
+2025-07-22 19:24:13,370 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this_zca_mean.py
+2025-07-22 19:24:13,370 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this_zca_mean.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:17,374 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:17,374 - MainThread - INFO - Completed task DLBench/389
+2025-07-22 19:24:17,672 - MainThread - INFO - Using function_name as-is: equalize_clahe
+2025-07-22 19:24:17,672 - MainThread - INFO - Using function_name as-is: equalize_clahe
+2025-07-22 19:24:17,675 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this_equalize_clahe.py
+2025-07-22 19:24:17,675 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this_equalize_clahe.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:22,196 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:22,196 - MainThread - INFO - Completed task DLBench/405
+2025-07-22 19:24:22,249 - MainThread - INFO - Using function_name as-is: vector_to_skew_symmetric_matrix
+2025-07-22 19:24:22,250 - MainThread - INFO - Using function_name as-is: vector_to_skew_symmetric_matrix
+2025-07-22 19:24:22,252 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_vector_to_skew_symmetric_matrix.py
+2025-07-22 19:24:22,252 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_vector_to_skew_symmetric_matrix.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:26,292 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:26,292 - MainThread - INFO - Completed task DLBench/406
+2025-07-22 19:24:26,358 - MainThread - INFO - Using function_name as-is: get_rotation_matrix2d
+2025-07-22 19:24:26,358 - MainThread - INFO - Using function_name as-is: get_rotation_matrix2d
+2025-07-22 19:24:26,362 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/transform/test_this_get_rotation_matrix2d.py
+2025-07-22 19:24:26,362 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/transform/test_this_get_rotation_matrix2d.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:30,446 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:30,446 - MainThread - INFO - Completed task DLBench/407
+2025-07-22 19:24:30,517 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:24:30,518 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:24:30,521 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/augmentation/_2d/intensity/test_this_apply_transform.py
+2025-07-22 19:24:30,521 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/augmentation/_2d/intensity/test_this_apply_transform.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:34,637 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:34,637 - MainThread - INFO - Completed task DLBench/409
+2025-07-22 19:24:34,710 - MainThread - INFO - Using function_name as-is: depth_from_point
+2025-07-22 19:24:34,710 - MainThread - INFO - Using function_name as-is: depth_from_point
+2025-07-22 19:24:34,713 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_depth_from_point.py
+2025-07-22 19:24:34,713 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_depth_from_point.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:38,779 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:38,780 - MainThread - INFO - Completed task DLBench/410
+2025-07-22 19:24:38,845 - MainThread - INFO - Using function_name as-is: undistort_image
+2025-07-22 19:24:38,846 - MainThread - INFO - Using function_name as-is: undistort_image
+2025-07-22 19:24:38,849 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/calibration/test_this_undistort_image.py
+2025-07-22 19:24:38,849 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/calibration/test_this_undistort_image.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:42,914 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:42,914 - MainThread - INFO - Completed task DLBench/411
+2025-07-22 19:24:42,982 - MainThread - INFO - Using function_name as-is: rotation_matrix_to_quaternion
+2025-07-22 19:24:42,982 - MainThread - INFO - Using function_name as-is: rotation_matrix_to_quaternion
+2025-07-22 19:24:42,985 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_rotation_matrix_to_quaternion.py
+2025-07-22 19:24:42,985 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_rotation_matrix_to_quaternion.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:47,080 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:47,080 - MainThread - INFO - Completed task DLBench/412
+2025-07-22 19:24:47,135 - MainThread - INFO - Using function_name as-is: KORNIA_CHECK_LAF
+2025-07-22 19:24:47,135 - MainThread - INFO - Using function_name as-is: KORNIA_CHECK_LAF
+2025-07-22 19:24:47,137 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/core/test_this_KORNIA_CHECK_LAF.py
+2025-07-22 19:24:47,137 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/core/test_this_KORNIA_CHECK_LAF.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:51,154 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:51,154 - MainThread - INFO - Completed task DLBench/413
+2025-07-22 19:24:51,225 - MainThread - INFO - Using function_name as-is: distort_points_kannala_brandt
+2025-07-22 19:24:51,226 - MainThread - INFO - Using function_name as-is: distort_points_kannala_brandt
+2025-07-22 19:24:51,228 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/camera/test_this_distort_points_kannala_brandt.py
+2025-07-22 19:24:51,228 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/camera/test_this_distort_points_kannala_brandt.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:55,319 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:55,319 - MainThread - INFO - Completed task DLBench/415
+2025-07-22 19:24:55,386 - MainThread - INFO - Using function_name as-is: safe_solve_with_mask
+2025-07-22 19:24:55,386 - MainThread - INFO - Using function_name as-is: safe_solve_with_mask
+2025-07-22 19:24:55,389 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/utils/test_this_safe_solve_with_mask.py
+2025-07-22 19:24:55,389 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/utils/test_this_safe_solve_with_mask.py --color=no --cache-clear -v -s"
+2025-07-22 19:24:59,408 - MainThread - WARNING - No clear result found for test test_fallback_for_old_pytorch, marking as failed
+2025-07-22 19:24:59,409 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:24:59,409 - MainThread - INFO - Completed task DLBench/419
+2025-07-22 19:24:59,480 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:24:59,481 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:24:59,485 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/transform/test_this_forward.py
+2025-07-22 19:24:59,485 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/transform/test_this_forward.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:03,429 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:03,429 - MainThread - INFO - Completed task DLBench/420
+2025-07-22 19:25:03,486 - MainThread - INFO - Using function_name as-is: axis_angle_to_rotation_matrix
+2025-07-22 19:25:03,486 - MainThread - INFO - Using function_name as-is: axis_angle_to_rotation_matrix
+2025-07-22 19:25:03,488 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_axis_angle_to_rotation_matrix.py
+2025-07-22 19:25:03,488 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_axis_angle_to_rotation_matrix.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:07,703 - MainThread - WARNING - No clear result found for test test_grad_check, marking as failed
+2025-07-22 19:25:07,704 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:07,704 - MainThread - INFO - Completed task DLBench/422
+2025-07-22 19:25:07,772 - MainThread - INFO - Using function_name as-is: euler_from_quaternion
+2025-07-22 19:25:07,772 - MainThread - INFO - Using function_name as-is: euler_from_quaternion
+2025-07-22 19:25:07,775 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_euler_from_quaternion.py
+2025-07-22 19:25:07,775 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_euler_from_quaternion.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:11,916 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:11,917 - MainThread - INFO - Completed task DLBench/437
+2025-07-22 19:25:11,992 - MainThread - INFO - Using function_name as-is: rotation
+2025-07-22 19:25:11,992 - MainThread - INFO - Using function_name as-is: rotation
+2025-07-22 19:25:11,994 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/camera/test_this_rotation.py
+2025-07-22 19:25:11,994 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/camera/test_this_rotation.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:16,151 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:16,151 - MainThread - INFO - Completed task DLBench/441
+2025-07-22 19:25:16,225 - MainThread - INFO - Using function_name as-is: find_fundamental
+2025-07-22 19:25:16,225 - MainThread - INFO - Using function_name as-is: find_fundamental
+2025-07-22 19:25:16,227 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_find_fundamental.py
+2025-07-22 19:25:16,227 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_find_fundamental.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:20,411 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:20,411 - MainThread - INFO - Completed task DLBench/447
+2025-07-22 19:25:20,480 - MainThread - INFO - Using function_name as-is: run_8point
+2025-07-22 19:25:20,480 - MainThread - INFO - Using function_name as-is: run_8point
+2025-07-22 19:25:20,482 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_run_8point.py
+2025-07-22 19:25:20,483 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_run_8point.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:24,808 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:24,808 - MainThread - INFO - Completed task DLBench/449
+2025-07-22 19:25:24,865 - MainThread - INFO - Using function_name as-is: make_upright
+2025-07-22 19:25:24,866 - MainThread - INFO - Using function_name as-is: make_upright
+2025-07-22 19:25:24,868 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/test_this_make_upright.py
+2025-07-22 19:25:24,868 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/test_this_make_upright.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:28,916 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:28,916 - MainThread - INFO - Completed task DLBench/450
+2025-07-22 19:25:28,992 - MainThread - INFO - Using function_name as-is: get_projective_transform
+2025-07-22 19:25:28,992 - MainThread - INFO - Using function_name as-is: get_projective_transform
+2025-07-22 19:25:28,995 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/transform/test_this_get_projective_transform.py
+2025-07-22 19:25:28,995 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/transform/test_this_get_projective_transform.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:33,070 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:33,070 - MainThread - INFO - Completed task DLBench/451
+2025-07-22 19:25:33,130 - MainThread - INFO - Using function_name as-is: rgb_to_hls
+2025-07-22 19:25:33,132 - MainThread - INFO - Using function_name as-is: rgb_to_hls
+2025-07-22 19:25:33,134 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/color/test_this_rgb_to_hls.py
+2025-07-22 19:25:33,134 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/color/test_this_rgb_to_hls.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:37,340 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:37,341 - MainThread - INFO - Completed task DLBench/452
+2025-07-22 19:25:37,406 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:25:37,406 - MainThread - INFO - Using function_name as-is: forward
+2025-07-22 19:25:37,409 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/transform/test_this_forward.py
+2025-07-22 19:25:37,409 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/transform/test_this_forward.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:41,705 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:41,705 - MainThread - INFO - Completed task DLBench/453
+2025-07-22 19:25:41,775 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:25:41,775 - MainThread - INFO - Using function_name as-is: apply_transform
+2025-07-22 19:25:41,778 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/augmentation/_2d/intensity/test_this_apply_transform.py
+2025-07-22 19:25:41,778 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/augmentation/_2d/intensity/test_this_apply_transform.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:45,876 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:45,876 - MainThread - INFO - Completed task DLBench/454
+2025-07-22 19:25:45,945 - MainThread - INFO - Using function_name as-is: quaternion_to_rotation_matrix
+2025-07-22 19:25:45,946 - MainThread - INFO - Using function_name as-is: quaternion_to_rotation_matrix
+2025-07-22 19:25:45,948 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_quaternion_to_rotation_matrix.py
+2025-07-22 19:25:45,948 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_quaternion_to_rotation_matrix.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:50,240 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:50,241 - MainThread - INFO - Completed task DLBench/456
+2025-07-22 19:25:50,298 - MainThread - INFO - Using function_name as-is: tensor_to_image
+2025-07-22 19:25:50,298 - MainThread - INFO - Using function_name as-is: tensor_to_image
+2025-07-22 19:25:50,300 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/utils/test_this_tensor_to_image.py
+2025-07-22 19:25:50,300 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/utils/test_this_tensor_to_image.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:54,562 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:54,562 - MainThread - INFO - Completed task DLBench/457
+2025-07-22 19:25:54,631 - MainThread - INFO - Using function_name as-is: apply_transfrom
+2025-07-22 19:25:54,633 - MainThread - INFO - Using function_name as-is: apply_transfrom
+2025-07-22 19:25:54,635 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/augmentation/_2d/intensity/test_this_apply_transfrom.py
+2025-07-22 19:25:54,636 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/augmentation/_2d/intensity/test_this_apply_transfrom.py --color=no --cache-clear -v -s"
+2025-07-22 19:25:58,721 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:25:58,721 - MainThread - INFO - Completed task DLBench/462
+2025-07-22 19:25:58,796 - MainThread - INFO - Using function_name as-is: raw_to_rgb
+2025-07-22 19:25:58,797 - MainThread - INFO - Using function_name as-is: raw_to_rgb
+2025-07-22 19:25:58,799 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/color/test_this_raw_to_rgb.py
+2025-07-22 19:25:58,799 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/color/test_this_raw_to_rgb.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:02,986 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:02,986 - MainThread - INFO - Completed task DLBench/463
+2025-07-22 19:26:03,062 - MainThread - INFO - Using function_name as-is: compute_projection_matrix
+2025-07-22 19:26:03,063 - MainThread - INFO - Using function_name as-is: compute_projection_matrix
+2025-07-22 19:26:03,064 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,064 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:03,065 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_compute_projection_matrix.py
+2025-07-22 19:26:03,065 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_compute_projection_matrix.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:07,237 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:07,237 - MainThread - INFO - Completed task DLBench/468
+2025-07-22 19:26:07,304 - MainThread - INFO - Using function_name as-is: compute_subpixel_step
+2025-07-22 19:26:07,304 - MainThread - INFO - Using function_name as-is: compute_subpixel_step
+2025-07-22 19:26:07,306 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:07,306 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:07,306 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:07,306 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:07,306 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:07,306 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:07,306 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:07,306 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:07,306 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:07,307 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:07,307 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:07,307 - MainThread - INFO - Removing problematic import: from your_module import ['DepthWarper', 'PinholeCamera']
+2025-07-22 19:26:07,307 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_compute_subpixel_step.py
+2025-07-22 19:26:07,307 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_compute_subpixel_step.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:11,535 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:11,535 - MainThread - INFO - Completed task DLBench/472
+2025-07-22 19:26:11,600 - MainThread - INFO - Using function_name as-is: denormalize_laf
+2025-07-22 19:26:11,600 - MainThread - INFO - Using function_name as-is: denormalize_laf
+2025-07-22 19:26:11,602 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/test_this_denormalize_laf.py
+2025-07-22 19:26:11,602 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/test_this_denormalize_laf.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:15,647 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:15,647 - MainThread - INFO - Completed task DLBench/477
+2025-07-22 19:26:15,708 - MainThread - INFO - Using function_name as-is: _compute_luts
+2025-07-22 19:26:15,708 - MainThread - INFO - Using function_name as-is: _compute_luts
+2025-07-22 19:26:15,711 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this__compute_luts.py
+2025-07-22 19:26:15,711 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/enhance/test_this__compute_luts.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:19,799 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:19,800 - MainThread - INFO - Completed task DLBench/479
+2025-07-22 19:26:19,859 - MainThread - INFO - Using function_name as-is: find_homography_lines_dlt
+2025-07-22 19:26:19,860 - MainThread - INFO - Using function_name as-is: find_homography_lines_dlt
+2025-07-22 19:26:19,862 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_find_homography_lines_dlt.py
+2025-07-22 19:26:19,862 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_find_homography_lines_dlt.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:23,940 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:23,940 - MainThread - INFO - Completed task DLBench/482
+2025-07-22 19:26:23,999 - MainThread - INFO - Using function_name as-is: deg2rad
+2025-07-22 19:26:23,999 - MainThread - INFO - Using function_name as-is: deg2rad
+2025-07-22 19:26:24,001 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_deg2rad.py
+2025-07-22 19:26:24,001 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_deg2rad.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:28,061 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:28,061 - MainThread - INFO - Completed task DLBench/485
+2025-07-22 19:26:28,131 - MainThread - INFO - Using function_name as-is: depth_to_3d
+2025-07-22 19:26:28,131 - MainThread - INFO - Using function_name as-is: depth_to_3d
+2025-07-22 19:26:28,134 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_depth_to_3d.py
+2025-07-22 19:26:28,134 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_depth_to_3d.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:32,264 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:32,264 - MainThread - INFO - Completed task DLBench/486
+2025-07-22 19:26:32,329 - MainThread - INFO - Using function_name as-is: rotate_laf
+2025-07-22 19:26:32,330 - MainThread - INFO - Using function_name as-is: rotate_laf
+2025-07-22 19:26:32,332 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/feature/test_this_rotate_laf.py
+2025-07-22 19:26:32,332 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/feature/test_this_rotate_laf.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:36,401 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:36,401 - MainThread - INFO - Completed task DLBench/488
+2025-07-22 19:26:36,471 - MainThread - INFO - Using function_name as-is: center_crop3d
+2025-07-22 19:26:36,472 - MainThread - INFO - Using function_name as-is: center_crop3d
+2025-07-22 19:26:36,475 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/transform/test_this_center_crop3d.py
+2025-07-22 19:26:36,475 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/transform/test_this_center_crop3d.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:40,707 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:40,707 - MainThread - INFO - Completed task DLBench/494
+2025-07-22 19:26:40,783 - MainThread - INFO - Using function_name as-is: binary_focal_loss_with_logits
+2025-07-22 19:26:40,785 - MainThread - INFO - Using function_name as-is: binary_focal_loss_with_logits
+2025-07-22 19:26:40,787 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/losses/test_this_binary_focal_loss_with_logits.py
+2025-07-22 19:26:40,787 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/losses/test_this_binary_focal_loss_with_logits.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:44,987 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:44,987 - MainThread - INFO - Completed task DLBench/495
+2025-07-22 19:26:45,057 - MainThread - INFO - Using function_name as-is: right_jacobian
+2025-07-22 19:26:45,057 - MainThread - INFO - Using function_name as-is: right_jacobian
+2025-07-22 19:26:45,059 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/liegroup/test_this_right_jacobian.py
+2025-07-22 19:26:45,059 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/liegroup/test_this_right_jacobian.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:49,176 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:49,176 - MainThread - INFO - Completed task DLBench/507
+2025-07-22 19:26:49,252 - MainThread - INFO - Using function_name as-is: draw_rectangle
+2025-07-22 19:26:49,252 - MainThread - INFO - Using function_name as-is: draw_rectangle
+2025-07-22 19:26:49,255 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/utils/test_this_draw_rectangle.py
+2025-07-22 19:26:49,255 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/utils/test_this_draw_rectangle.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:53,370 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:53,370 - MainThread - INFO - Completed task DLBench/508
+2025-07-22 19:26:53,453 - MainThread - INFO - Using function_name as-is: project
+2025-07-22 19:26:53,453 - MainThread - INFO - Using function_name as-is: project
+2025-07-22 19:26:53,456 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/camera/test_this_project.py
+2025-07-22 19:26:53,456 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/camera/test_this_project.py --color=no --cache-clear -v -s"
+2025-07-22 19:26:57,670 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:26:57,670 - MainThread - INFO - Completed task DLBench/511
+2025-07-22 19:26:57,752 - MainThread - INFO - Using function_name as-is: convert_points_to_homogeneous
+2025-07-22 19:26:57,753 - MainThread - INFO - Using function_name as-is: convert_points_to_homogeneous
+2025-07-22 19:26:57,755 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/test_this_convert_points_to_homogeneous.py
+2025-07-22 19:26:57,755 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/test_this_convert_points_to_homogeneous.py --color=no --cache-clear -v -s"
+2025-07-22 19:27:01,760 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:27:01,760 - MainThread - INFO - Completed task DLBench/517
+2025-07-22 19:27:01,825 - MainThread - INFO - Using function_name as-is: cross_product_matrix
+2025-07-22 19:27:01,825 - MainThread - INFO - Using function_name as-is: cross_product_matrix
+2025-07-22 19:27:01,827 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/geometry/epipolar/test_this_cross_product_matrix.py
+2025-07-22 19:27:01,828 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia:/app/kornia kornia bash -c "cd /app/kornia && python -m pytest kornia/geometry/epipolar/test_this_cross_product_matrix.py --color=no --cache-clear -v -s"
+2025-07-22 19:27:05,839 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 19:27:05,839 - MainThread - INFO - Completed task DLBench/520

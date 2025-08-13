@@ -1,0 +1,5 @@
+2025-07-22 18:03:09,215 - MainThread - INFO - Using function_name as-is: invert
+2025-07-22 18:03:11,168 - MainThread - INFO - Using function_name as-is: invert
+2025-07-22 18:03:11,169 - MainThread - ERROR - Error processing test cases: compile() arg 1 must be a string, bytes or AST object
+2025-07-22 18:03:15,485 - MainThread - ERROR - Error creating test file for DLBench/76: [Errno 13] Permission denied: '/home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this_invert.py'
+2025-07-22 18:03:15,485 - MainThread - ERROR - Failed to create test file for task DLBench/76

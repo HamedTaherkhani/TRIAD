@@ -1,0 +1,4 @@
+2025-07-22 18:26:31,978 - MainThread - INFO - Using function_name as-is: invert
+2025-07-22 18:26:34,009 - MainThread - INFO - Using function_name as-is: invert
+2025-07-22 18:27:04,169 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this_invert.py
+2025-07-22 18:28:01,402 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/kornia:/home/hamed/PycharmProjects/VALTEST/Kornia/kornia kornia bash -c "cd /home/hamed/PycharmProjects/VALTEST/Kornia/kornia && python -m pytest ../enhance/test_this_invert.py --color=no --cache-clear -v -s"

@@ -1,0 +1,7 @@
+2025-07-22 18:30:41,312 - MainThread - INFO - Using function_name as-is: invert
+2025-07-22 18:30:41,312 - MainThread - INFO - Using function_name as-is: invert
+2025-07-22 18:30:41,314 - MainThread - INFO - Created test file: /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this_invert.py
+2025-07-22 18:30:41,314 - MainThread - INFO - __pycache__ cleared.
+2025-07-22 18:30:41,314 - MainThread - INFO - Running Docker command: docker run --rm -v /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/kornia:/home/hamed/PycharmProjects/VALTEST/Kornia/kornia kornia bash -c "python -m pytest /home/hamed/PycharmProjects/VALTEST/Kornia/kornia/kornia/enhance/test_this_invert.py --color=no --cache-clear -v -s"
+2025-07-22 18:30:46,011 - MainThread - INFO - Results saved to JSONL: /home/hamed/PycharmProjects/VALTEST/cross_test/ground_truth_test_results____kornia.jsonl
+2025-07-22 18:30:46,012 - MainThread - INFO - Completed task DLBench/76
