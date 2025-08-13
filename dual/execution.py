@@ -42,7 +42,7 @@ def evaluate_with_test_code(
             args = (task_id, prompt, completion, test, entry_point, timeout, is_unittest)
             res = check_correctness(*args)
             print(res['passed'])
-            logger.info(f'Evaluation result: {res}')
+            # logger.info(f'Evaluation result: {res}')
             logger.info(f'{ij} execution requests are submitted')
             results[res["task_id"]][res["completion"]] = res
     elif dataset_name == 'kornia':

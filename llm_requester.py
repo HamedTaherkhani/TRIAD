@@ -98,23 +98,27 @@ class OpenaiRequester(LLMRequester):
 
     def get_completion(self,
             messages: list[str],
-            max_tokens=4000,
             temperature=0,
             seed=123,
             n=1,
     ) -> list[str]:
+        messages[0]['content'] = messages[0]['content'] + "PUT THE PYTHON IMPLEMENTATION IN BETWEEN ```python and ``` tags "
         params = {
             "model": self.name,
             "messages": messages,
-            "max_tokens": max_tokens,
-            "temperature": temperature,
             "seed": seed,
             "n": n
         }
-        completion = self.client.chat.completions.create(**params)
+        if self.name not in ('gpt-5-mini', 'o3-mini', 'o3'):
+            params['temperature'] = temperature
+        try:
+            completion = self.client.chat.completions.create(**params)
+        except Exception as e:
+            print(e)
+            raise e
         self.token_usage.completion_tokens += completion.usage.completion_tokens
         self.token_usage.prompt_tokens += completion.usage.prompt_tokens
-        self.token_usage.total_tokens += completion.total_tokens
+        self.token_usage.total_tokens += completion.usage.total_tokens
         return [choice.message.content for choice in completion.choices]
 
 

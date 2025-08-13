@@ -65,7 +65,7 @@ def perform_dual_agreement(
     # print(ground_truth_exec_result[0])
     print('dual result')
     print(f'len dual result: {len(dual_exec_result)}')
-    print(dual_exec_result[0])
+    # print(dual_exec_result[0])
     count_duel = 0
     for aa in dual_exec_result:
         for ii in aa['passed']:
@@ -139,11 +139,4 @@ if __name__ == "__main__":
     tests_path = f'generated_tests/final_tests/{args.test_approach}/{args.dataset}-{args.llm}.pkl'
     code_path = f'generated_solutions/{args.code_approach}/{args.dataset}-{args.llm}.pkl'
     file_name = f'output/dual_agreement/{args.dataset}-{args.llm}_{args.test_approach}_{args.code_approach}.txt'
-    print(f'Writing the output to {file_name}')
-    with open(file_name, 'w') as f:
-        orig_stdout = sys.stdout
-        sys.stdout = f
-        real_dataset = []
-
-        # process_functions(input_path, output_pickle, valtest_scores_dir, args.approach)
-        perform_dual_agreement(tests_path=tests_path, code_path=code_path, timeout=args.timeout, dataset_name=args.dataset, code_approach=args.code_approach)
+    perform_dual_agreement(tests_path=tests_path, code_path=code_path, timeout=args.timeout, dataset_name=args.dataset, code_approach=args.code_approach)

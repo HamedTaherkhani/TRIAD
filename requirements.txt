@@ -1,7 +1,7 @@
 openai==1.98.0
 numpy
 python-dotenv==1.1.1
-datasets==4.0.0
+datasets<4.0.0
 coverage==7.10.1
 mutmut==3.3.1
 pytest==8.4.1
@@ -12,4 +12,3 @@ astor
 evaluate
 anthropic==0.60.0
 llamaapi==0.1.36
-sentence_transformers

@@ -189,7 +189,7 @@ class TestCodeGenerator:
 
     def generate_hollistic_tests(self,problem: Function)-> Function:
         prompt_str = test_holistic_prompt.format(signature=problem.prompt)
-        completions = self.llm_interface.get_completion(messages=[{'content': prompt_str}], n=1, temperature=0)
+        completions = self.llm_interface.get_completion(messages=[{'content': prompt_str, 'role':'user'}], n=1, temperature=0)
         if not completions:
             problem.generated_testcases = []
             return problem
@@ -206,6 +206,7 @@ class TestCodeGenerator:
 
         # Optional: strip leading/trailing whitespace from each block
         code_blocks = [block.strip() for block in code_blocks]
+        print(code_blocks)
         testcases = []
         for block in code_blocks:
             testcases.append(TestCase(
@@ -228,9 +229,12 @@ def parallel_generate_stubs(problem: Function, model: str, backend:str) -> Funct
     return generator.generate_stubs_for_problem(problem)
 
 def parallel_generate_tests_hollistic(problem: Function, model: str, backend:str):
-    llm = init_llm(model, backend)
-    generator = TestCodeGenerator(llm)
-    return generator.generate_hollistic_tests(problem)
+    try:
+        llm = init_llm(model, backend)
+        generator = TestCodeGenerator(llm)
+        return generator.generate_hollistic_tests(problem)
+    except Exception as ex:
+        raise ex
 
 def parallel_enrich_tests(problem: Function, model: str, n_completions: int, backend:str) -> Function:
     """
@@ -281,8 +285,8 @@ def main(args):
     else:
         # If you had other loaders, you could add them here
         raise ValueError(f"Unsupported dataset: {args.dataset}")
-    # problems = problems[:10]
-    print(f"Loaded {len(problems)} problems from dataset '{args.dataset}'.")
+    # problems = problems[:5]
+    # print(f"Loaded {len(problems)} problems from dataset '{args.dataset}'.")
     if args.approach  == "self-consistency":
         step1_output = f'generated_tests/stub/{args.dataset}-{args.model}.pkl'
         if os.path.exists(step1_output):
@@ -294,7 +298,7 @@ def main(args):
             # 2) Step 1: Generate stubs in parallel
             # -------------------------------------------------------------------------
             print("\n=== Step 1: Generating 20 unittest stubs for each problem ===")
-            with ProcessPoolExecutor(max_workers=10) as executor:
+            with ThreadPoolExecutor(max_workers=10) as executor:
                 updated_problems = list(
                     tqdm(
                         executor.map(
@@ -330,7 +334,7 @@ def main(args):
                 final_problems: list[Function] = pickle.load(a_file)
         else:
             n_completions = 5
-            with ProcessPoolExecutor(max_workers=10) as executor:
+            with ThreadPoolExecutor(max_workers=10) as executor:
                 final_problems = list(
                     tqdm(
                         executor.map(
@@ -359,7 +363,7 @@ def main(args):
     elif args.approach == 'holistic':
         os.makedirs(f'generated_tests/final_tests/{args.approach}', exist_ok=True)
         step2_output = f"generated_tests/final_tests/{args.approach}/{args.dataset}-{args.model}.pkl"
-        with ProcessPoolExecutor() as executor:
+        with ThreadPoolExecutor(max_workers=10) as executor:
             final_problems = list(
                 tqdm(
                     executor.map(
@@ -383,16 +387,11 @@ if __name__ == "__main__":
 
     approaches = ["self-consistency", "holistic"]
     parser = argparse.ArgumentParser(description="Run the script with specified dataset and LLM.")
-    parser.add_argument("--dataset", type=str, default="ClassEval", help="Name of dataset (e.g. ClassEval)",
+    parser.add_argument("--dataset", type=str, required=True, help="Name of dataset (e.g. LBPPPython)",
                         choices=VALID_DATASETS)
-    parser.add_argument("--model", type=str, default="gpt-4o", help="Name of LLM model (e.g. gpt-4 or gpt-3.5-turbo)",
+    parser.add_argument("--model", type=str, required=True, help="Name of LLM model (e.g. gpt-4 or gpt-3.5-turbo)",
                         choices=VALID_LLMS)
-    parser.add_argument("--approach", type=str, default="self-consistency",choices=approaches)
+    parser.add_argument("--approach", type=str, required=True,choices=approaches)
     parser.add_argument('--backend', type=str, required=True, choices=backends)
     args = parser.parse_args()
-    os.makedirs(f'output/{args.approach}/', exist_ok=True)
-    file_name = f'output/{args.approach}/{args.dataset}-{args.model}.txt'
-    with open(file_name, 'w') as f:
-        orig_stdout = sys.stdout
-        sys.stdout = f
-        main(args)
+    main(args)

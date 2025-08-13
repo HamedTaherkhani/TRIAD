@@ -18,6 +18,7 @@ python generate_solutions.py \
     --backend "$BACKEND" \
     --approach "$CODE_APPROACH"
 
+export PYTHONPATH=`pwd`
 python dual/dual_agreement.py \
     --dataset "$DATASET" \
     --llm "$MODEL" \

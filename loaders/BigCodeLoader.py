@@ -3,6 +3,7 @@ import os
 from datasets import load_dataset
 import re
 import json
+from reusable_classes import Function
 
 def find_import_statements(python_code: str) -> list:
     # Regular expressions to match both 'import' and 'from ... import ...' statements
@@ -53,6 +54,7 @@ class BigCodeLoader:
         self.libs = []
         self.all_imports = []
         self.tests = []
+        self.functions = []
         for item in ds:
             # if 'file' in item['complete_prompt']:
             #     continue
@@ -76,8 +78,19 @@ class BigCodeLoader:
                 sol = imports_text + item['instruct_prompt'] + item['canonical_solution']
             self.solutions.append(sol)
             self.tests.append(item['test'])
+            self.functions.append(Function(
+                prompt=item['complete_prompt'],
+                solution=sol,
+                task_id=item['task_id'],
+                original_tests=item['test'],
+                dataset='BigCodeBenchHard',
+                generated_testcases=[],
+            ))
     def get_prompts(self):
         return self.prompts
+
+    def get_functions(self)->list[Function]:
+        return self.functions
 
     def get_tests(self):
         return self.tests

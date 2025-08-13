@@ -8,7 +8,7 @@ from tqdm import tqdm
 from function_executor import run_test_cases
 from reusable_classes import Function
 
-def decode_str(str_to_decode: str) -> str | list | dict:
+def decode_str(str_to_decode: str) -> list:
     return json.loads(pickle.loads(zlib.decompress(base64.b64decode(str_to_decode.encode("utf-8")))))
 
 def find_import_statements(python_code: str) -> list:
@@ -23,7 +23,7 @@ def find_import_statements(python_code: str) -> list:
     # Combine both types of imports into a single list
     return imports + from_imports + ['import numpy as np', 'import pandas as pd', 'import pytest', 'import time', 'from copy import deepcopy', 'import math', 'from math import sqrt', 'import datetime']
 
-def extract_function_signature(text: str) -> str | None:
+def extract_function_signature(text: str) -> str:
     """
     Extract the Python function signature from a block of text.
 

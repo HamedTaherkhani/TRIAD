@@ -26,10 +26,14 @@ class PostProcessor:
         result = []
         for ix, func in enumerate(functions):
             for comp in func.generated_solutions:
+                if dataset_name in ('BigCodeBench', 'BigCodeBenchHard'):
+                    the_test = func.original_tests
+                else:
+                    the_test = '\n'.join(func.original_tests)
                 result.append({
                     'task_id': func.task_id,
                     'prompt': func.prompt,
-                    'test':'\n'.join(func.original_tests),
+                    'test': the_test,
                     'entry_point': extract_function_name(func.solution),
                     'completion': comp
                 })

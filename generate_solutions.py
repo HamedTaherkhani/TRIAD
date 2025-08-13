@@ -54,8 +54,11 @@ def generate_solutions(dataset_name, llm_name, approach, backend, max_workers=8)
         with open(out_path, 'rb') as f:
             data: List[Function] = pickle.load(f)
     else: ## generate baseline response
+        print('Generating baseline responses ...')
         if dataset_name == 'LBPPPython':
             dataset: List[Function] = LBPPLoaderPython().get_functions()
+        elif dataset_name == 'BigCodeBenchHard':
+            dataset: List[Function] = BigCodeLoader(hard=1).get_functions()
         else:
             raise Exception(f"Dataset {dataset_name} is not supported.")
 
@@ -78,6 +81,7 @@ def generate_solutions(dataset_name, llm_name, approach, backend, max_workers=8)
 
             solutions = []
             for s in responses:
+                # print(s)
                 sols = '\n'.join(separate_python_code_blocks(s))
                 print(sols)
                 print('*' * 100)

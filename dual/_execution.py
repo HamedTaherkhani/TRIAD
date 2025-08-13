@@ -32,7 +32,7 @@ def check_correctness_with_test_cases(task_id, prompt, completion, test_cases, t
     suite provided in the problem. 
     """
     extend_timeout = timeout*len(test_cases)
-    print(f'testcases are: \n{test_cases}')
+    # print(f'testcases are: \n{test_cases}')
     def unsafe_execute():
 
         with create_tempdir():

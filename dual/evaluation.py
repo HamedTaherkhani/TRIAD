@@ -68,7 +68,7 @@ def compute_vr_func(func, best_sol, idx, is_unittest=False):
         gen_results = [gen[0] for gen in gen_results]
     else:
         gen_results = check_correctness_with_test_cases(idx, func.prompt, best_sol, gen_test_texts, timeout=5, is_unittest=is_unittest)['result']
-    print(gen_results)
+    # print(gen_results)
     # print(best_sol)
     # for a in gen_test_texts:
     #     print(a)
@@ -120,7 +120,7 @@ def find_scores(func, dual_res, valtest):
     all_passed_tests = {}
     if dual_res is not None:
         all_codes_len = len(set([r[0] for r in dual_res]))
-        print(f"all_codes_len: {all_codes_len}")
+        # print(f"all_codes_len: {all_codes_len}")
         for pair in dual_res:
             if pair[1] in all_passed_tests.keys():
                 all_passed_tests[pair[1]] +=1
