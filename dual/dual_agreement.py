@@ -19,15 +19,18 @@ from evaluation import compute_validity_rate
 # Main processing: load, select best, run both original & generated tests, update, and compute metrics
 # -------------------------------------------------------------------------------
 def perform_dual_agreement(
-    tests_path: str, code_path: str, timeout, dataset_name
+    tests_path: str, code_path: str, timeout, dataset_name, code_approach
 ) -> None:
     with open(tests_path, "rb") as f:
         generated_tests: List[Function] = pickle.load(f)
 
     with open(code_path, "rb") as f:
         generated_sols: List[Function] = pickle.load(f)
-    generated_tests = generated_tests[:10]
-    generated_sols = generated_sols[:10]
+        if code_approach in ('CoVe', 'self-consistency'):
+            for sol in generated_sols:
+                sol.generated_solutions = sol.verified_solutions
+    # generated_tests = generated_tests[:10]
+    # generated_sols = generated_sols[:10]
 
     print(f'tests_path len: {len(generated_tests)}')
     print(f'code_path len: {len(generated_sols)}')
@@ -79,7 +82,7 @@ def perform_dual_agreement(
     data_manager = DataManager(dual_exec_result, handled_solutions, handled_test_cases)
     set_consistency = DualAgreement(data_manager)
     ranked_result,passed_solution_test_case_pairs_by_task = set_consistency.get_sorted_solutions_without_iter()
-    if dataset_name == 'BigCodeBenchHard':
+    if dataset_name in ('BigCodeBenchHard', 'LBPPPython'):
         is_unittest=True
     else:
         is_unittest=False
@@ -143,4 +146,4 @@ if __name__ == "__main__":
         real_dataset = []
 
         # process_functions(input_path, output_pickle, valtest_scores_dir, args.approach)
-        perform_dual_agreement(tests_path=tests_path, code_path=code_path, timeout=args.timeout, dataset_name=args.dataset)
+        perform_dual_agreement(tests_path=tests_path, code_path=code_path, timeout=args.timeout, dataset_name=args.dataset, code_approach=args.code_approach)

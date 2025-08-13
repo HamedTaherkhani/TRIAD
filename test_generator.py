@@ -294,7 +294,7 @@ def main(args):
             # 2) Step 1: Generate stubs in parallel
             # -------------------------------------------------------------------------
             print("\n=== Step 1: Generating 20 unittest stubs for each problem ===")
-            with ProcessPoolExecutor(10) as executor:
+            with ProcessPoolExecutor(max_workers=10) as executor:
                 updated_problems = list(
                     tqdm(
                         executor.map(
@@ -329,11 +329,8 @@ def main(args):
             with open(step2_output, 'rb') as a_file:
                 final_problems: list[Function] = pickle.load(a_file)
         else:
-            if args.approach == "two-stage":
-                n_completions = 1
-            else:
-                n_completions = 5
-            with ProcessPoolExecutor(10) as executor:
+            n_completions = 5
+            with ProcessPoolExecutor(max_workers=10) as executor:
                 final_problems = list(
                     tqdm(
                         executor.map(

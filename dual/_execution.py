@@ -49,7 +49,7 @@ def check_correctness_with_test_cases(task_id, prompt, completion, test_cases, t
             # actual_tests = [test[0] for test in test_cases]
             # Construct the check program and run it.
             check_program = (
-                prompt + "\n" +completion + "\n" +
+               completion + "\n" +
                 _pack_test_cases(test_cases, timeout)
             )
             # print(check_program)
@@ -129,7 +129,7 @@ def check_correctness(task_id: str, prompt: str, completion: str, test: str, ent
             a = prompt + completion + "\n" + test
 
             check_program = (
-                prompt + '\n' + completion + "\n" + test
+                completion + "\n" + test
             )
             # print('*'*100)
             # print(check_program)

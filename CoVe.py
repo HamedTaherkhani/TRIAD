@@ -27,20 +27,38 @@ def plan_verification_questions(prompt: str, baseline_response: str, llm_request
     Step 2: Given the original prompt and the baseline response, generate a set of
     verification questions that check for mistakes or hallucinations.
     """
-    planning_prompt = f"""You are an expert in verifying code solutions.
-Below is the original prompt and a baseline code solution.
-Your task is to generate a list of questions that can verify the correctness of the baseline code.
-Each question should ask for a specific aspect or test case to confirm the code's correctness or a question about the reasoning steps of the given solution. Devise the most 10 critical questions.
-Do not refer to the code directly. Instead, generate general verification questions.
+    planning_prompt = f"""
+    You are an expert software tester and code auditor specializing in verifying the correctness of code solutions.
 
-PROMPT:
-\"\"\"{prompt}\"\"\"
+    You will be given:
+    1. The **original prompt** describing the coding task.
+    2. A **baseline solution** (LLM-generated code) that attempts to solve the task.
 
-BASELINE SOLUTION:
-\"\"\"{baseline_response}\"\"\"
+    Your job is to produce a **list of the 10 most critical and insightful verification questions**.  
+    These questions will be used to **evaluate whether the baseline solution is correct, robust, and aligned with the given prompt**.
 
-Provide your verification questions as a numbered list.
-"""
+    Your questions should:
+    - Test **core correctness** (does it produce the right outputs for given inputs?).
+    - Cover **edge cases** (unusual or extreme inputs that may break the solution).
+    - Examine **reasoning and logic** (is the algorithm correct and complete?).
+    - Check **error handling and robustness**.
+    - Identify **assumption validation** (does the code rely on unstated or unsafe assumptions?).
+
+    Be specific — each question should target one concrete aspect of the solution.  
+    Avoid vague questions like "Is the code correct?" — instead, ask targeted, testable questions.
+
+    ---
+
+    **PROMPT:**
+    \"\"\"{prompt}\"\"\"
+
+    **BASELINE SOLUTION:**
+    \"\"\"{baseline_response}\"\"\"
+
+    **Output format:**
+    A numbered list of exactly 10 clear, concise, and targeted verification questions.
+    """
+
     planning_response = llm_requester.get_completion(messages=[{
                     "role": "user",
                     "content": planning_prompt
@@ -60,17 +78,46 @@ Provide your verification questions as a numbered list.
         questions = [line.strip() for line in planning_response.splitlines() if line.strip()]
     return questions
 
-def execute_verifications(prompt: str, verification_questions: List[str], answer:str, llm_requester:LLMRequester) -> str:
+def execute_verifications(prompt: str, verification_questions: List[str], answer:str, llm_requester:LLMRequester) -> Tuple[str, bool]:
     """
     Step 3: For each verification question, obtain an answer using Gemini.
     """
-    verification_prompt = f"""You are a fact-checking assistant for code generation.
-Answer the following verification questions according to the problem and the solution to help confirm the correctness of the Python code solution.
-For each question provide answer and explanations. Answer all the questions. Pay attention to the problem and the provided examples in the problem to infer the correct answer. The problem is the ground truth but the solution may have bugs.
-#Problem#:
-{prompt}
-#Solution#:
-{answer}
+    verification_prompt = f"""
+    You are an expert code verifier and fact-checking assistant for Python code solutions.
+
+    You will be given:
+    1. **Problem statement** – the exact coding task to solve (this is the *ground truth*).
+    2. **Proposed solution** – a Python code implementation that may contain bugs.
+    3. **Verification questions** – targeted checks designed to confirm correctness and alignment with the problem.
+
+    Your tasks:
+    1. **Answer ALL verification questions** one by one.
+       - For each question:
+         - Provide a **direct answer** ("Yes", "No", "Partially", or a specific fact).
+         - Provide an explanation using:
+           - The problem statement (ground truth)
+           - The proposed code
+           - Logical reasoning about expected vs. actual behavior
+    2. After answering all questions, assess **overall correctness** of the code:
+       - Decide whether the code has **major issues** that make it incorrect, incomplete, or unsafe to use.
+       - If major issues exist, explicitly state:
+         ```
+         ##MAJOR ISSUES##
+         ```
+       - If no major issues exist, explicitly state:
+         ```
+         ##NO MAJOR ISSUES##
+         ```
+    ---
+
+    **Problem Statement (Ground Truth)**:
+    \"\"\"{prompt}\"\"\"
+
+    **Proposed Solution (May Contain Bugs)**:
+    ```python
+    {answer}
+    ```
+
 #Verification Questions#:
 """
     for idx, question in enumerate(verification_questions, start=1):
@@ -87,7 +134,8 @@ Verification Question {idx}: {question}
     # If answer comes as a list or tuple, use the first element
     if isinstance(answer, (list, tuple)):
         answer = answer[0]
-    return answer
+    no_major_issues = "##NO MAJOR ISSUES##".lower() in answer.lower()
+    return answer, no_major_issues
 
 def generate_final_verified_response(prompt: str, baseline_response: str, verif_questions, verification_answers: str, llm_requester:LLMRequester) -> str:
     """
@@ -99,43 +147,40 @@ def generate_final_verified_response(prompt: str, baseline_response: str, verif_
         verification_prompt += f"""
     Verification Question {idx}: {question}
     """
-    final_prompt = f"""You are a senior code expert tasked with verifying and improving code solutions.
-Below you are provided with:
-1. The original problem prompt.
-2. A baseline code solution.
-3. A list of verification questions and their answers related to the baseline.
+    final_prompt = f"""
+    You are a **senior Python expert** responsible for **verifying, correcting, and improving** a code solution.
 
-Using the verification responses, identify any mistakes or hallucinated parts in the baseline solution,
-and provide a revised, correct Python implementation that addresses any issues detected. Also provide an explanation of the mistakes in the baseline solution based on the verification answers. If there is not any mistakes in the baseline solution, print ##NO mistakes found in the original solution##. Also indicate if the mistake is minor or major.
-##Examples of major mistakes:
-**The response provides the wrong answer to the user.
-**The code does not have the functionality as described in the response (major unexpected side effects and/or does not perform the action described).
-Example: [javascript how to sort array numerically] -> "Use Array.sort() to sort an array" (sort() turns numbers into strings and sorts alphabetically).
-**The code does not handle likely edge cases.
-**The code implements incorrect logic.
+    You are given:
+    1. **Original problem prompt** – the ground truth requirements.
+    2. **Baseline code solution** – an initial attempt at solving the problem (may contain mistakes).
+    3. **Verification questions** – targeted checks for correctness.
+    4. **Verification answers** – results of these checks, including explanations of correctness or errors.
 
-##Examples of minor mistakes:
-**The code includes minor problems that are straightforward to fix (e.g. missing imports or small syntax errors).
-**The code does not handle uncommon edge cases.
-**The code has readability issues.
-**There are redundant operations or variables in the code.
-**The code has performance issues.
+    Your tasks:
+    1. **Analyze** the verification answers to:
+       - Identify any **mistakes, incorrect logic, missing requirements, or hallucinated functionality** in the baseline code.
+       - Confirm if there are **no mistakes**.
+    2. If mistakes exist:
+       - Produce a **fully corrected Python solution** that meets *all* requirements in the original problem prompt.
+       - Ensure the revised code is:
+         - Correct and bug-free.
+         - Robust to edge cases.
+    3. **Explain** the mistakes found in the baseline solution, referencing the verification answers as evidence.
+    4. If no mistakes exist output the Baseline Code Solution in the response.
+    ---
 
-At the end, print ##Minor issues## or ##Major issues## or ##No issues##
+    **Original Prompt (Ground Truth)**:
+    \"\"\"{prompt}\"\"\"
 
-Original Prompt:
-\"\"\"{prompt}\"\"\"
-
-Baseline Code Solution:
-\"\"\"{baseline_response}\"\"\"
+    **Baseline Code Solution**:
+    ```python
+    {baseline_response}
 
 Verification Questions:
 \"\"\"{verification_prompt}\"\"\"
 
 Verification Answers:
 \"\"\"{verification_answers}\"\"\"
-
-Please provide the final revised code solution in the original language in the baseline solution.
 
 Put the final revised code solution inside ```python and ``` tags after ###Final Response:
 ###Final Response
@@ -173,7 +218,11 @@ def chain_of_verification_pipeline(prompt: str, answer: str,model,backend) -> Tu
     # print(verif_questions)
     # time.sleep(2)
     # Execute the verification queries.
-    verif_answers = execute_verifications(prompt, verif_questions, answer, llm_requester)
+    verif_answers,no_major_issues = execute_verifications(prompt, verif_questions, answer, llm_requester)
+    if no_major_issues:
+        print("No major issues found.")
+        return answer, llm_requester.get_total_usage()
+    print("Major issues found. Trying to solve the issues in the code...")
     results["verification_answers"] = verif_answers
     # print('===verification answers:===')
     # print(verif_answers)

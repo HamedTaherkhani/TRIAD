@@ -79,7 +79,7 @@ def compute_vr_func(func, best_sol, idx, is_unittest=False):
     tp = fp = tn = fn = 0
     for tc, passed in zip(func.generated_testcases, gen_results):
         tc.prediction_is_valid = 1 if passed else 0
-        print(passed)
+        # print(passed)
         # Only count if tc.is_valid is not None
         if tc.is_valid is not None:
             if tc.is_valid == 1 and tc.prediction_is_valid == 1:
@@ -144,6 +144,7 @@ def find_scores(func, dual_res, valtest):
 def compute_validity_rate(ranked_result, ground_truth_exec_result, functions, is_unittest):
     print(f'ranked_result len: {len(ranked_result)}')
     print(f'functions len: {len(functions)}')
+    # print(dict(ranked_result))
     ground_truth_exec_result = _dictionized_ground_truth_results(ground_truth_exec_result)
 
     print(f'ground_truth_exec_result len: {len(ground_truth_exec_result)}')
@@ -154,7 +155,7 @@ def compute_validity_rate(ranked_result, ground_truth_exec_result, functions, is
         if func.task_id in ranked_result and ranked_result[func.task_id]:
             best_sol = ranked_result[func.task_id][0][0][0]
             # print(idd)
-            print(f'best_sol: \n{best_sol}')
+            # print(f'best_sol: \n{best_sol}')
         else:
             print('pppppppppppp')
             try:
