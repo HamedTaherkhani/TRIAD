@@ -50,11 +50,11 @@ def generate_solutions(dataset_name, llm_name, approach, backend, max_workers=8)
     out_path = f'generated_solutions/vanilla/{dataset_name}-{llm_name}.pkl'
     total_token_usage = TokenUsage()
     if os.path.exists(out_path):
-        print('Loading baseline responses from ', out_path)
+        print('Loading baseline solutions from ', out_path)
         with open(out_path, 'rb') as f:
             data: List[Function] = pickle.load(f)
     else: ## generate baseline response
-        print('Generating baseline responses ...')
+        print('Generating baseline solutions ...')
         if dataset_name == 'LBPPPython':
             dataset: List[Function] = LBPPLoaderPython().get_functions()
         elif dataset_name == 'BigCodeBenchHard':
@@ -75,7 +75,7 @@ def generate_solutions(dataset_name, llm_name, approach, backend, max_workers=8)
                         ),
                     }
                 ],
-                temperature=0.4,
+                temperature=0.8,
                 n=7
             )
 
@@ -101,24 +101,26 @@ def generate_solutions(dataset_name, llm_name, approach, backend, max_workers=8)
         with open(out_path, "wb") as file:
             pickle.dump(data, file)
     if approach == 'CoVe':
-        print('Verifying solutions using CoVe...')
+        print('Verifying solutions with CoVe...')
         # data = data[:1]
         os.makedirs(f'generated_solutions/CoVe', exist_ok=True)
         out_path = f'generated_solutions/CoVe/{dataset_name}-{llm_name}.pkl'
-
-        for func in tqdm(data):
-            verified_sols = []
-            with ThreadPoolExecutor(max_workers=max_workers) as executor:
-                futures = [executor.submit(chain_of_verification_pipeline, func.prompt,sol, llm_name,backend) for sol in func.generated_solutions]
-                for f in as_completed(futures):
-                    verified_sol, token_usage = f.result()
-                    verified_sols.append(verified_sol)
-                    total_token_usage += token_usage
-                print('len(verified_sols)', len(verified_sols))
-                func.verified_solutions = verified_sols
-            print('total_token_usage: \n', total_token_usage)
-        with open(out_path, "wb") as file:
-            pickle.dump(data, file)
+        if os.path.exists(out_path):
+            print('Loading CoVe solutions from ', out_path)
+        else:
+            for func in tqdm(data):
+                verified_sols = []
+                with ThreadPoolExecutor(max_workers=max_workers) as executor:
+                    futures = [executor.submit(chain_of_verification_pipeline, func.prompt,sol, llm_name,backend) for sol in func.generated_solutions]
+                    for f in as_completed(futures):
+                        verified_sol, token_usage = f.result()
+                        verified_sols.append(verified_sol)
+                        total_token_usage += token_usage
+                    print('len(verified_sols)', len(verified_sols))
+                    func.verified_solutions = verified_sols
+                print('total_token_usage: \n', total_token_usage)
+            with open(out_path, "wb") as file:
+                pickle.dump(data, file)
 
     print(f'Total tokens used: {total_token_usage}')
 

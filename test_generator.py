@@ -85,7 +85,7 @@ class TestCodeGenerator:
         else:
             raise Exception(f"Unknown dataset: {problem.dataset}")
 
-        completions = self.llm_interface.get_completion(messages=[{'content':prompt_str}], n=1, temperature=0)
+        completions = self.llm_interface.get_completion(messages=[{'content':prompt_str, 'role':'user'}], n=1, temperature=0)
         if not completions:
             problem.generated_testcases = []
             return problem
@@ -175,7 +175,7 @@ class TestCodeGenerator:
             # We prompt for multiple completions to apply self-consistency
             prompt_str = self.chain_of_thought_prompt(stub.text, problem.prompt)
             completions = self.llm_interface.get_completion(
-                messages=[{'content': prompt_str}], n=n_completions, temperature=0
+                messages=[{'content': prompt_str, 'role':'user'}], n=n_completions, temperature=0
             )
             if not completions:
                 continue
@@ -206,7 +206,6 @@ class TestCodeGenerator:
 
         # Optional: strip leading/trailing whitespace from each block
         code_blocks = [block.strip() for block in code_blocks]
-        print(code_blocks)
         testcases = []
         for block in code_blocks:
             testcases.append(TestCase(
@@ -329,7 +328,7 @@ def main(args):
         os.makedirs(f'generated_tests/final_tests/{args.approach}', exist_ok=True)
         step2_output = f"generated_tests/final_tests/{args.approach}/{args.dataset}-{args.model}.pkl"
         if os.path.exists(step2_output):
-            print('loading final tests from ' + step2_output)
+            print('loading tests from ' + step2_output)
             with open(step2_output, 'rb') as a_file:
                 final_problems: list[Function] = pickle.load(a_file)
         else:
@@ -363,23 +362,25 @@ def main(args):
     elif args.approach == 'holistic':
         os.makedirs(f'generated_tests/final_tests/{args.approach}', exist_ok=True)
         step2_output = f"generated_tests/final_tests/{args.approach}/{args.dataset}-{args.model}.pkl"
-        with ThreadPoolExecutor(max_workers=10) as executor:
-            final_problems = list(
-                tqdm(
-                    executor.map(
-                        parallel_generate_tests_hollistic,
-                        problems,
-                        [args.model] * len(problems),
-                        [args.backend] * len(problems),
-                    ),
-                    total=len(problems),
-                    desc="Processing problems"
+        if not os.path.exists(step2_output):
+            with ThreadPoolExecutor(max_workers=10) as executor:
+                final_problems = list(
+                    tqdm(
+                        executor.map(
+                            parallel_generate_tests_hollistic,
+                            problems,
+                            [args.model] * len(problems),
+                            [args.backend] * len(problems),
+                        ),
+                        total=len(problems),
+                        desc="Processing problems"
+                    )
                 )
-            )
-        evaluate_problems_and_update(final_problems)
-        with open(step2_output, "wb") as f:
-            pickle.dump(final_problems, f)
-
+            evaluate_problems_and_update(final_problems)
+            with open(step2_output, "wb") as f:
+                pickle.dump(final_problems, f)
+        else:
+            print('loading tests from ' + step2_output)
     print("\nAll done!\n")
 
 
