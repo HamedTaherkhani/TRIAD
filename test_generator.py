@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from concurrent.futures import ProcessPoolExecutor
 from openai import OpenAI
 from datasets_and_llms import VALID_DATASETS, VALID_LLMS
+from itertools import repeat
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
 from tqdm import tqdm
@@ -21,7 +22,7 @@ from function_executor import run_unit_tests_parallel
 from loaders import BigCodeLoader, LBPPLoaderPython
 from prompts import test_holistic_prompt, test_setup_prompt, test_setup_prompt_classeval, PY_TEST_GENERATION_FEW_SHOT_BigCodeBench, test_setup_prompt_lbpp, self_consistency_prompt
 from reusable_classes import Function, TestCase
-from llm_requester import FireworksAPIRequester, LLMRequester, OpenaiRequester, backends, init_llm
+from llm_requester import FireworksAPIRequester, LLMRequester, OpenaiRequester, backends, init_llm, TokenUsage
 ###############################################################################
 # TestCodeGenerator
 ###############################################################################
@@ -208,6 +209,7 @@ class TestCodeGenerator:
         code_blocks = [block.strip() for block in code_blocks]
         testcases = []
         for block in code_blocks:
+            # print(block)
             testcases.append(TestCase(
                 text=block,
             ))
@@ -231,7 +233,7 @@ def parallel_generate_tests_hollistic(problem: Function, model: str, backend:str
     try:
         llm = init_llm(model, backend)
         generator = TestCodeGenerator(llm)
-        return generator.generate_hollistic_tests(problem)
+        return generator.generate_hollistic_tests(problem), llm.get_total_usage()
     except Exception as ex:
         raise ex
 
@@ -277,6 +279,7 @@ def main(args):
     # -------------------------------------------------------------------------
     # 1) Load the dataset
     # -------------------------------------------------------------------------
+    total_token_usage = TokenUsage()
     if args.dataset == "LBPPPython":
         problems:List[Function] = LBPPLoaderPython().get_functions()
     elif args.dataset == "BigCodeBenchHard":
@@ -284,7 +287,8 @@ def main(args):
     else:
         # If you had other loaders, you could add them here
         raise ValueError(f"Unsupported dataset: {args.dataset}")
-    # problems = problems[:5]
+    if args.num_instances is not None:
+        problems = problems[:args.num_instances]
     # print(f"Loaded {len(problems)} problems from dataset '{args.dataset}'.")
     if args.approach  == "self-consistency":
         step1_output = f'generated_tests/stub/{args.dataset}-{args.model}.pkl'
@@ -298,7 +302,7 @@ def main(args):
             # -------------------------------------------------------------------------
             print("\n=== Step 1: Generating 20 unittest stubs for each problem ===")
             with ThreadPoolExecutor(max_workers=10) as executor:
-                updated_problems = list(
+                results = list(
                     tqdm(
                         executor.map(
                             parallel_generate_stubs,
@@ -307,10 +311,13 @@ def main(args):
                             [args.backend] * len(problems),
                         ),
                     total = len(problems),  # Required for tqdm to know the length
-                    desc = "Processing problems"
+                    desc = "Generating test stubs..."
                     )
 
                 )
+            updated_problems, usage = map(list, zip(*results))
+            total_usage = sum(usage, TokenUsage())
+            total_token_usage += total_usage
             evaluate_problems_and_update(updated_problems)
             with open(step1_output, "wb") as f:
                 pickle.dump(updated_problems, f)
@@ -334,7 +341,7 @@ def main(args):
         else:
             n_completions = 5
             with ThreadPoolExecutor(max_workers=10) as executor:
-                final_problems = list(
+                results = list(
                     tqdm(
                         executor.map(
                             parallel_enrich_tests,
@@ -344,16 +351,19 @@ def main(args):
                             [args.backend] * len(updated_problems),
                         ),
                         total=len(updated_problems),
-                        desc="Processing problems"
+                        desc="Enriching test stubs using self consistency...",
                     )
                 )
-
+            final_problems, usage = map(list, zip(*results))
+            total_usage = sum(usage, TokenUsage())
+            total_token_usage += total_usage
             # Save final results
+            print(f'total_token_usage: \n {total_token_usage}')
+            print('running evaluation on final tests')
             evaluate_problems_and_update(final_problems)
             with open(step2_output, "wb") as f:
                 pickle.dump(final_problems, f)
             print(f"Step 2 done. Final tests with assertions saved to '{step2_output}'.")
-            print('running evaluation on final tests')
             # for problem in final_problems:
             #     for test in problem.generated_testcases:
             #         print(test.text)
@@ -364,24 +374,34 @@ def main(args):
         step2_output = f"generated_tests/final_tests/{args.approach}/{args.dataset}-{args.model}.pkl"
         if not os.path.exists(step2_output):
             with ThreadPoolExecutor(max_workers=10) as executor:
-                final_problems = list(
+                results = list(
                     tqdm(
                         executor.map(
                             parallel_generate_tests_hollistic,
                             problems,
-                            [args.model] * len(problems),
-                            [args.backend] * len(problems),
+                            repeat(args.model, len(problems)),
+                            repeat(args.backend, len(problems)),
                         ),
                         total=len(problems),
-                        desc="Processing problems"
+                        desc="Generating tests holistic...",
                     )
                 )
+
+            if results:
+                # results is a list of (generated_tests, usage)
+                final_problems, usages = map(list, zip(*results))
+            else:
+                final_problems, usages = [], []
+            total_usages = sum(usages, TokenUsage())
+            total_token_usage += total_usages
+            print(f'total token usages: {total_token_usage}')
+            # print(final_problems)
             evaluate_problems_and_update(final_problems)
             with open(step2_output, "wb") as f:
                 pickle.dump(final_problems, f)
         else:
             print('loading tests from ' + step2_output)
-    print("\nAll done!\n")
+    print("\nTest Generation Done!\n")
 
 
 if __name__ == "__main__":
@@ -394,5 +414,6 @@ if __name__ == "__main__":
                         choices=VALID_LLMS)
     parser.add_argument("--approach", type=str, required=True,choices=approaches)
     parser.add_argument('--backend', type=str, required=True, choices=backends)
+    parser.add_argument('--num_instances', type=int, required=False, default=None)
     args = parser.parse_args()
     main(args)

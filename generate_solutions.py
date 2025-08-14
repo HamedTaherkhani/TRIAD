@@ -45,7 +45,7 @@ def separate_python_code_blocks(text: str) -> List[str]:
     return [block.strip() for block in code_blocks]
 
 
-def generate_solutions(dataset_name, llm_name, approach, backend, max_workers=8):
+def generate_solutions(dataset_name, llm_name, approach, backend, num_instances, max_workers=8):
     os.makedirs(f'generated_solutions/vanilla', exist_ok=True)
     out_path = f'generated_solutions/vanilla/{dataset_name}-{llm_name}.pkl'
     total_token_usage = TokenUsage()
@@ -61,6 +61,8 @@ def generate_solutions(dataset_name, llm_name, approach, backend, max_workers=8)
             dataset: List[Function] = BigCodeLoader(hard=1).get_functions()
         else:
             raise Exception(f"Dataset {dataset_name} is not supported.")
+        if num_instances is not None:
+            dataset = dataset[:num_instances]
 
         def process_function(func):
             llm_requester = init_llm(model=llm_name, backend=backend)
@@ -83,8 +85,8 @@ def generate_solutions(dataset_name, llm_name, approach, backend, max_workers=8)
             for s in responses:
                 # print(s)
                 sols = '\n'.join(separate_python_code_blocks(s))
-                print(sols)
-                print('*' * 100)
+                # print(sols)
+                # print('*' * 100)
                 solutions.append(sols)
             func.generated_solutions = solutions
             return func, llm_requester.get_total_usage()
@@ -134,11 +136,10 @@ def main():
     parser.add_argument('--llm', type=str, required=True, choices=VALID_LLMS, help=f'The LLM to use. Options are {VALID_LLMS}')
     parser.add_argument('--approach', type=str, required=True,choices=['CoVe', 'vanilla'])
     parser.add_argument('--backend', type=str, required=True, choices=backends)
+    parser.add_argument('--num_instances', type=int, required=False, default=None)
     # Parse arguments
     args = parser.parse_args()
-
-    llm_name = args.llm
-    generate_solutions(args.dataset, llm_name, args.approach, args.backend)
+    generate_solutions(args.dataset, args.llm, args.approach, args.backend, args.num_instances)
 
 if __name__ == '__main__':
     main()

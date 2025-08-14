@@ -1,11 +1,11 @@
 #!/bin/bash
 
 DATASET="LBPPPython"
-MODEL="llama4-maverick-instruct-basic"
+MODEL="qwen3-coder-480b-a35b-instruct"
 BACKEND="fireworks"
-TEST_APPROACH="self-consistency"
-CODE_APPROACH="CoVe"
-
+TEST_APPROACH="holistic"
+CODE_APPROACH="vanilla"
+NUM_INSTANCES=5
 python test_generator.py \
     --dataset "$DATASET" \
     --model "$MODEL" \

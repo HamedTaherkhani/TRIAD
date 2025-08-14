@@ -28,13 +28,12 @@ class Function:
     def __str__(self):
         # Create a string representation of test cases
         generated_testcases_str = "\n".join([str(tc) for tc in self.generated_testcases])
-        original_tests_str = self.original_tests if self.original_tests else "None"
-
+        generated_solutions_str = "\n".join(self.generated_solutions)
         return (
             f"Prompt:\n{self.prompt}\n"
             f"Solution:\n{self.solution}\n"
-            f"Original Tests:\n{original_tests_str}\n"
-            f"Test Cases:\n{generated_testcases_str}"
+            f"Generated Test Cases:\n{generated_testcases_str}"
+            f"Generated Solutions:\n{generated_solutions_str}"
         )
 
     def __repr__(self):

@@ -74,6 +74,8 @@ class FireworksAPIRequester(LLMRequester):
             return [res['message']['content'] for res in res['choices']]
         except (requests.exceptions.JSONDecodeError, KeyError) as e:
             print(res)
+            print('Retrying after 10 seconds ...')
+            return self.get_completion(messages, **kwargs)
             return [prompt]
 
 
