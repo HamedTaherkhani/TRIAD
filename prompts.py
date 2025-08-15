@@ -47,7 +47,7 @@ Given a Python function `{signature}` to solve the following task:
 
 Write 20 valid python unit test setups (unit test classes) for this task description. The test setups must be diverse and include different scenarios and inputs. Write any other necessary setup for the unit tests to run.
 
-Don't write the assertion statements in the unit tests. Instead write a comment placeholder on the lines that the assertions should be writen. Write #***Assertion statement*** in the lines that should have assertions as a comment. Make sure that to put it as comment (#) so that we won't get syntax error.
+Don't write the assertion statements in the unit tests. Instead write a comment placeholder on the lines that the assertions should be writen. Write #***Assertion statement*** in the lines that should have assertions as a comment. Make sure that to put it as comment (#) so that we won't get syntax error. Don't implement the actual assertion statement.
 Assume the function is implemented in the current file and don't import anything the function from another file. If needed create files or directories in the setUp and remove them in tearDown method. Don't assume there are already any files or directories on system. Delete any created files or resources in tearDown method.
 Put each unit test between separate ```python and ``` tags. Make sure every testcase has setUp method and also another method that defines a test case. Write every object initialization or defining any variable in the setUp. Don't write more than 1 test function in each test case.
 """
@@ -73,9 +73,9 @@ generate tests for this function:
 self_consistency_prompt = """You have the following Python unittest code stub that includes 
 placeholder lines '#***Assertion statement***'. Your task is to complete the test stub by replacing the '#***Assertion statement***' with an actual assertion statement.
 
-Please think step-by-step (chain-of-thought) about what should be the expected output of the assertions in the unit test based on the given function's description or python class description. Think what the expected output should be given the test stub. Then replace each '#***Assertion statement***' with a single valid unittest assertion statement. produce the valid final unit test. 
+Please think step-by-step (chain-of-thought) about what should be the expected output of the assertions in the unit test based on the given function's description or python class description. Think what the expected output should be given the test stub. Then replace each '#***Assertion statement***' with a single valid unittest assertion statement. Produce the valid final complete unit test. 
 Use assertRaises to catch the expected exceptions and errors given the input and the functionality of the function.
-Return Python code in your final answer in ```python and ``` tags. Remove all #***Assertion statement*** comments and replace it with a single assertion statement. Don't implement the function.
+Return Python code in your final answer after ##Final Code## tag inside ```python and ``` tags. Remove all #***Assertion statement*** comments and replace it with a single assertion statement. Don't implement the function.
 
 for example given the following test stub and function description:
 
@@ -104,8 +104,7 @@ But rather:
 [
 [1, 2, 3, 0, 7, 0]
 [4, 5, 6, 0, 8, 0]
-]
-Write it in Python.\"\"\"
+]\"\"\"
 
 import unittest
 class TestSearchExactFit(unittest.TestCase):
@@ -118,6 +117,8 @@ class TestSearchExactFit(unittest.TestCase):
         #***Assertion statement***
 
 Complete the test stub like:
+##Final Code##
+```python
 import unittest
 class TestSearchExactFit(unittest.TestCase):
     def setUp(self):
@@ -127,7 +128,7 @@ class TestSearchExactFit(unittest.TestCase):
     def test_exact_fit_case(self):
         result = search(self.i, self.P)
         self.assertEqual(result, self.P) 
-
+```
 Now for the following function or class description:
 
 {prompt}
@@ -263,7 +264,7 @@ class TestSearchLargeCValue(unittest.TestCase):
 
 test_setup_prompt_lbpp = """
 Given a python function signature, write 20 valid python unit test stubs for the given function. The test stubs must be diverse and include different scenarios and inputs. Write any other necessary setup for the unit tests to run.
-Don't write the assertion statements in the unit tests. Instead write a comment placeholder on the lines that the assertions should be writen. Write #***Assertion statement*** in the lines that should have assertions.
+Don't write the assertion statements in the unit tests. Instead write a comment placeholder on the lines that the assertions should be writen. Write #***Assertion statement*** in the lines that should have assertions. Don't implement the actual assertion statement.
 Assume the function is implemented in the current file and don't import anything the function from another file.
 Put each unit test between separate ```python and ``` tags. Make sure every testcase has setUp method and also another method that defines a test case. Write every object initialization or defining any variables in the setUp method. Don't write more than 1 test function in each test case.
 

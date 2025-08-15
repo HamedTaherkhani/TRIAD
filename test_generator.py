@@ -3,8 +3,10 @@ import sys
 import argparse
 import os
 import pickle
+from typing import List, Tuple, Optional
+import ast
+import copy
 import re
-from typing import List
 from dotenv import load_dotenv
 from concurrent.futures import ProcessPoolExecutor
 from openai import OpenAI
@@ -126,24 +128,82 @@ class TestCodeGenerator:
         print(f'frequency length is {len(frequency.keys())}')
         return best_code
 
-    def self_consistency(self, testcases: List[str]):
+    def extract_test_function_as_standalone(self, source: str) -> Optional[str]:
+        """
+        Parse `source`, find the first function whose name starts with `test_`
+        (including methods inside classes), and return a standalone, comment-free
+        version of that function's code. If it's a method, `self`/`cls` is removed
+        from the signature. Returns None if nothing is found.
+        """
+        tree = ast.parse(source)
+
+        # Walk the tree to find a FunctionDef starting with test_
+        target_fn = None
+        for node in ast.walk(tree):
+            if isinstance(node, ast.FunctionDef) and node.name.startswith("test_"):
+                target_fn = node
+                break
+
+        if target_fn is None:
+            return None
+
+        # Deep-copy the node so we can modify without touching the original tree
+        fn = copy.deepcopy(target_fn)
+
+        # If it's a method (very likely when inside a class), drop leading self/cls
+        if fn.args.args:
+            first_arg = fn.args.args[0].arg
+            if first_arg in ("self", "cls"):
+                fn.args.args = fn.args.args[1:]
+
+        # Remove decorators (keep it simple as a plain function)
+        fn.decorator_list = []
+
+        # Rebuild as a module with only this function so ast.unparse outputs cleanly
+        module = ast.Module(body=[fn], type_ignores=[])
+        ast.fix_missing_locations(module)
+
+        # ast.unparse removes comments automatically
+        code = ast.unparse(module)
+
+        # The above produces a module string; we only want the function body text.
+        # ast.unparse on Module with one FunctionDef returns just the def anyway,
+        # but to be safe, grab the first "def ..." block.
+        m = re.search(r"^def\s+test_[\s\S]*$", code, flags=re.M)
+        code = code if m is None else m.group(0)
+
+        # Optional compacting to match your exact example spacing
+        # (turn "x = 1" -> "x=1", "x == 1" -> "x==1")
+        code = re.sub(r"\s*==\s*", "==", code)
+        code = re.sub(r"\s*=\s*", "=", code)
+
+        # Keep indentation tidy: remove trailing spaces on each line
+        code = "\n".join(line.rstrip() for line in code.splitlines())
+
+        return code
+
+    def self_consistency(self, all_test_codes: List[str]):
         # Step 1: Build the list of (testcase_string, set_of_assertions)
         test_assertions = []
-        for testcase in testcases:
+        if len(all_test_codes) == 0:
+            return ''
+        for testcase in all_test_codes:
             try:
-                code_block = re.findall(r"```python(.*?)```", testcase, re.DOTALL)[0]
-            except IndexError:
+                test_function = self.extract_test_function_as_standalone(testcase)
+            except Exception as e:
                 continue
-            lines = code_block.splitlines()
-            # Gather all lines containing 'assert'
-            assertion_lines = set(line.strip() for line in lines if 'assert' in line)
-            test_assertions.append((code_block, assertion_lines))
-
+            # print(test_function)
+            if test_function is None:
+                print('test function is None')
+                continue
+            test_assertions.append((testcase, test_function))
+        if len(test_assertions) == 0:
+            return all_test_codes[0]
         # Step 2: Count how many times each unique set of assertions appears
         # (use frozenset so it's hashable as a dict key)
         assertion_dict = defaultdict(list)
-        for testcase, assertion_lines in test_assertions:
-            assertion_dict[frozenset(assertion_lines)].append(testcase)
+        for testcase, test_function in test_assertions:
+            assertion_dict[frozenset(test_function)].append(testcase)
 
         # Step 3: The number of unique tests is simply how many unique sets of assertions we have
         num_unique_tests = len(assertion_dict)
@@ -155,13 +215,13 @@ class TestCodeGenerator:
             most_repeated_test = assertion_dict[max_assertion_set][0]
             repeats = len(assertion_dict[max_assertion_set])
         except ValueError:
-            most_repeated_test = ''
+            most_repeated_test = all_test_codes[0]
             max_assertion_set = []
             repeats =0
         # Return or print the results
-        print("Number of unique tests (based on assertions):", num_unique_tests)
+        # print("Number of unique tests (based on assertions):", num_unique_tests)
         # print("Test with the highest frequency:", most_repeated_test)
-        print("Number of repeats for that test:", repeats)
+        # print("Number of repeats for that test:", repeats)
 
         # Optionally return them if you need them programmatically
         return most_repeated_test
@@ -180,9 +240,23 @@ class TestCodeGenerator:
             )
             if not completions:
                 continue
-
+            all_test_codes = []
+            for completion in completions:
+                try:
+                    try:
+                        test_code = completion.split('##Final Code##')[1]
+                    except IndexError:
+                        test_code = completion
+                    test_code = re.findall(r"```python(.*?)```", test_code, re.DOTALL)[0]
+                    all_test_codes.append(test_code)
+                except IndexError:
+                    continue
             # Self-consistency: pick the identical test that appears most frequently
-            best_code = self.self_consistency(completions)
+            # for tt in all_test_codes:
+            #     print(tt)
+            #     print(11)
+            # print('*'*10)
+            best_code = self.self_consistency(all_test_codes)
             stub.text = best_code
 
         # problem.generated_testcases = new_tests
@@ -220,14 +294,14 @@ class TestCodeGenerator:
 ###############################################################################
 # Parallel Operations
 ###############################################################################
-def parallel_generate_stubs(problem: Function, model: str, backend:str) -> Function:
+def parallel_generate_stubs(problem: Function, model: str, backend:str) -> Tuple[Function, TokenUsage]:
     """
     Helper function for step 1 (so it can be used with ProcessPoolExecutor).
     Creates a local LLMInterface and TestCodeGenerator, returns the problem with stubs.
     """
     llm = init_llm(model, backend)
     generator = TestCodeGenerator(llm)
-    return generator.generate_stubs_for_problem(problem)
+    return generator.generate_stubs_for_problem(problem), llm.get_total_usage()
 
 def parallel_generate_tests_hollistic(problem: Function, model: str, backend:str):
     try:
@@ -237,14 +311,14 @@ def parallel_generate_tests_hollistic(problem: Function, model: str, backend:str
     except Exception as ex:
         raise ex
 
-def parallel_enrich_tests(problem: Function, model: str, n_completions: int, backend:str) -> Function:
+def parallel_enrich_tests(problem: Function, model: str, n_completions: int, backend:str):
     """
     Helper function for step 2 (so it can be used with ProcessPoolExecutor).
     Creates a local LLMInterface and TestCodeGenerator, returns the problem with final tests.
     """
     llm = init_llm(model, backend)
     generator = TestCodeGenerator(llm)
-    return generator.enrich_problem_tests(problem, n_completions)
+    return generator.enrich_problem_tests(problem, n_completions), llm.get_total_usage()
 
 def evaluate_problems_and_update(problems: List[Function]):
     all_results = []

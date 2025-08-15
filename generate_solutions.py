@@ -118,9 +118,9 @@ def generate_solutions(dataset_name, llm_name, approach, backend, num_instances,
                         verified_sol, token_usage = f.result()
                         verified_sols.append(verified_sol)
                         total_token_usage += token_usage
-                    print('len(verified_sols)', len(verified_sols))
+                    # print('len(verified_sols)', len(verified_sols))
                     func.verified_solutions = verified_sols
-                print('total_token_usage: \n', total_token_usage)
+                # print('total_token_usage: \n', total_token_usage)
             with open(out_path, "wb") as file:
                 pickle.dump(data, file)
 
