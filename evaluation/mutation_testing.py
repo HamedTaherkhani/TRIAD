@@ -7,7 +7,7 @@ import re
 import multiprocessing
 import ast
 from tqdm import tqdm
-from mutation_testing_bigcode import perform_overall_mutation_testing_bigcodebench
+from mutation_testing_unittest import perform_overall_mutation_testing_unittest
 from typing import List
 from reusable_classes import Function
 import argparse
@@ -376,8 +376,7 @@ def perform_mutation_testing(functions: List[Function], dataset):
 
     ## perform mutmut mutation testing
     if 'BigCode' in dataset or dataset == 'LBPPPython':
-        print('running BigCode mutation testing...')
-        perform_overall_mutation_testing_bigcodebench(functions_with_tests=functions_tests, dataset=dataset)
+        perform_overall_mutation_testing_unittest(functions_with_tests=functions_tests, dataset=dataset)
     else:
         perform_overall_mutation_testing(functions_with_tests=functions_tests, dataset=dataset)
 

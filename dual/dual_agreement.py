@@ -7,7 +7,7 @@ from typing import List, Dict, Any
 from reusable_classes import Function
 from function_executor import run_test_cases
 from generate_solutions import IMPORT_HEADER
-from datasets_and_llms import VALID_DATASETS, VALID_LLMS
+from datasets_and_llms import VALID_DATASETS, VALID_LLMS, TEST_APPROACHES, CODE_APPROACHES
 from function_executor_codet import check_correctness_with_test_cases
 from tqdm import tqdm
 import math
@@ -130,13 +130,13 @@ if __name__ == "__main__":
         "--test_approach",
         type=str,
         required=True,
-        choices=['self-consistency', 'holistic'],
+        choices=TEST_APPROACHES,
     )
     parser.add_argument(
         '--code_approach',
         type=str,
         required=True,
-        choices=['self-consistency', 'vanilla', 'CoVe'],
+        choices=CODE_APPROACHES,
     )
     parser.add_argument(
         "--timeout",

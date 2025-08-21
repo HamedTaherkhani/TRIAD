@@ -70,7 +70,7 @@ def worker_func(args):
     return perform_mutation_testing_for_functions_bigcode(func, dataset)
 
 
-def perform_overall_mutation_testing_bigcodebench(functions_with_tests, dataset, chunk_size=10):
+def perform_overall_mutation_testing_unittest(functions_with_tests, dataset, chunk_size=10):
     # Split your functions into chunks
 
     total_mutants = 0
@@ -153,6 +153,7 @@ def make_files_for_testing(temp_dir, function_with_tests, dataset):
 def perform_mutation_testing_for_functions_bigcode(function_with_tests, dataset):
     # Create a temporary directory for the project
     temp_dir = tempfile.mkdtemp(prefix="mutation_test_")
+    # temp_dir = '/home/hamed/PycharmProjects/TRIAD/temp_dir'
     original_cwd = os.getcwd()
     original_pythonpath = os.environ.get('PYTHONPATH', '')
 
@@ -223,7 +224,7 @@ def perform_mutation_testing_for_functions_bigcode(function_with_tests, dataset)
             )
 
         result = mutmut_run.stdout
-        print(result)
+        # print(result)
         # Parse the results
         scores = find_mut_score(result)
         if scores is None:

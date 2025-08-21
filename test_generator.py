@@ -24,7 +24,7 @@ from tqdm import tqdm
 from function_executor import run_unit_tests_parallel
 # from loaders.ClassEvalLoader import ClassEvalLoader  # The class that loads your dataset
 from loaders import BigCodeLoader, LBPPLoaderPython
-from prompts import test_holistic_prompt, test_setup_prompt, test_setup_prompt_classeval, PY_TEST_GENERATION_FEW_SHOT_BigCodeBench, test_setup_prompt_lbpp, self_consistency_prompt
+from prompts import test_holistic_prompt, test_setup_prompt, test_setup_prompt_classeval, PY_TEST_GENERATION_FEW_SHOT_BigCodeBench, test_setup_prompt_lbpp, self_consistency_prompt, two_stage_enrich_prompt
 from reusable_classes import Function, TestCase
 from llm_requester import FireworksAPIRequester, LLMRequester, OpenaiRequester, backends, init_llm, TokenUsage
 ###############################################################################
@@ -110,11 +110,14 @@ class TestCodeGenerator:
         problem.generated_testcases = testcases
         return problem
 
-    def chain_of_thought_prompt(self, stub: str, prompt: str) -> str:
+    def get_enrich_prompt(self, stub: str, prompt: str, approach) -> str:
         """
         Returns a chain-of-thought style prompt asking the LLM to add valid assertions.
         """
-        return self_consistency_prompt.format(stub=stub, prompt=prompt)
+        if approach == 'self-consistency':
+            return self_consistency_prompt.format(stub=stub, prompt=prompt)
+        else:
+            return two_stage_enrich_prompt.format(stub=stub, prompt=prompt)
 
     def self_consistency_v1(self, testcases: List[str]):
         frequency = {}
@@ -228,7 +231,7 @@ class TestCodeGenerator:
         # Optionally return them if you need them programmatically
         return most_repeated_test
 
-    def enrich_problem_tests(self, problem: Function, n_completions=1) -> Function:
+    def enrich_problem_tests(self, problem: Function, approach, n_completions=1) -> Function:
         """
         For each stub in problem.generated_tests, generate multiple completions with
         chain-of-thought prompting, pick the best final code using self-consistency,
@@ -236,7 +239,7 @@ class TestCodeGenerator:
         """
         for stub in problem.generated_testcases:
             # We prompt for multiple completions to apply self-consistency
-            prompt_str = self.chain_of_thought_prompt(stub.text, problem.prompt)
+            prompt_str = self.get_enrich_prompt(stub.text, problem.prompt, approach)
             completions = self.llm_interface.get_completion(
                 messages=[{'content': prompt_str, 'role':'user'}], n=n_completions, temperature=0
             )
@@ -258,7 +261,13 @@ class TestCodeGenerator:
             #     print(tt)
             #     print(11)
             # print('*'*10)
-            best_code = self.self_consistency(all_test_codes)
+            if approach == 'self-consistency':
+                best_code = self.self_consistency(all_test_codes)
+            else:
+                try:
+                    best_code = all_test_codes[0]
+                except IndexError:
+                    best_code = stub.text
             stub.text = best_code
 
         # problem.generated_testcases = new_tests
@@ -313,14 +322,15 @@ def parallel_generate_tests_hollistic(problem: Function, model: str, backend:str
     except Exception as ex:
         raise ex
 
-def parallel_enrich_tests(problem: Function, model: str, n_completions: int, backend:str):
+def parallel_enrich_tests(problem: Function, model: str, n_completions: int, backend:str, approach:str):
     """
     Helper function for step 2 (so it can be used with ProcessPoolExecutor).
     Creates a local LLMInterface and TestCodeGenerator, returns the problem with final tests.
     """
     llm = init_llm(model, backend)
     generator = TestCodeGenerator(llm)
-    return generator.enrich_problem_tests(problem, n_completions), llm.get_total_usage()
+    # print(f'n_completions: {n_completions}')
+    return generator.enrich_problem_tests(problem=problem, approach=approach, n_completions=n_completions), llm.get_total_usage()
 
 def evaluate_problems_and_update(problems: List[Function]):
     all_results = []
@@ -355,6 +365,10 @@ def main(args):
     # -------------------------------------------------------------------------
     # 1) Load the dataset
     # -------------------------------------------------------------------------
+    cwd = os.getcwd()
+    # print(os.path.join(cwd, f'output/generated_tests/final_tests/{args.approach}'))
+    os.makedirs(os.path.join(cwd, f'output/generated_tests/final_tests/{args.approach}'), exist_ok=True)
+    os.makedirs(os.path.join(cwd, f'output/generated_tests/stub/'), exist_ok=True)
     total_token_usage = TokenUsage()
     if args.dataset == "LBPPPython":
         problems:List[Function] = LBPPLoaderPython().get_functions()
@@ -366,7 +380,7 @@ def main(args):
     if args.num_instances is not None:
         problems = problems[:args.num_instances]
     # print(f"Loaded {len(problems)} problems from dataset '{args.dataset}'.")
-    if args.approach  == "self-consistency":
+    if args.approach in ("self-consistency", "two-stage"):
         step1_output = f'output/generated_tests/stub/{args.dataset}-{args.model}.pkl'
         if os.path.exists(step1_output):
             print(f'loading test stubs from {step1_output}...')
@@ -409,13 +423,16 @@ def main(args):
         #     if sample.generated_tests:
         #         print(len(sample.generated_tests))
         os.makedirs(f'output/generated_tests/final_tests/{args.approach}', exist_ok=True)
-        step2_output = f"'output/generated_tests/final_tests/{args.approach}/{args.dataset}-{args.model}.pkl"
+        step2_output = f"output/generated_tests/final_tests/{args.approach}/{args.dataset}-{args.model}.pkl"
         if os.path.exists(step2_output):
             print('loading tests from ' + step2_output)
             with open(step2_output, 'rb') as a_file:
                 final_problems: list[Function] = pickle.load(a_file)
         else:
-            n_completions = 5
+            if args.approach == "self-consistency":
+                n_completions = 5
+            else:
+                n_completions = 1
             with ThreadPoolExecutor(max_workers=10) as executor:
                 results = list(
                     tqdm(
@@ -425,9 +442,10 @@ def main(args):
                             [args.model] * len(updated_problems),
                             [n_completions] * len(updated_problems),
                             [args.backend] * len(updated_problems),
+                            [args.approach] * len(updated_problems)
                         ),
                         total=len(updated_problems),
-                        desc="Enriching test stubs using self consistency...",
+                        desc=f"Enriching test stubs using {args.approach}...",
                     )
                 )
             final_problems, usage = map(list, zip(*results))

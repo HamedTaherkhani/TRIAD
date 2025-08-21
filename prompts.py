@@ -70,6 +70,73 @@ generate tests for this function:
 {signature}
 """
 
+two_stage_enrich_prompt = """
+You have the following Python unittest code stub that includes 
+placeholder lines '#***Assertion statement***'. Your task is to complete the test stub by replacing the '#***Assertion statement***' with an actual assertion statement.
+Return Python code in your final answer after ##Final Code## tag inside ```python and ``` tags. Remove all #***Assertion statement*** comments and replace it with a single assertion statement. Don't implement the function.
+
+for example given the following test stub and function description:
+
+def search(i: int, P: list[list[int]]):
+   \"\"\"You are given a list L containing n integer vectors with numbers in [1, v], where v>1. Each vector can have a different size,
+denoted as s_i. You are also given a number c, which we call a context window. Assume that s_i <= c.
+The goal is to create a new list of integer vectors P with a uniform size of c, using the vectors in L, while minimizing the amount of
+vectors in P and the free space at the end of each row in P.
+The rules for creating P are as follows:
+Fit each vector in L into a row in P.
+Separate each vector from the list L in the same row in P with a 0.
+Pad any remaining space at the end of a row in P, which cannot be filled by any of the remaining vectors in L, with zeros.
+A single vector from L cannot be split across multiple rows in P.
+If there is a vector in L whose size is larger than c, return an empty list.
+If there are multiple ways of minimizing the number of vectors of P, return the one where earlier vectors of L are packed in earlier vectors of P, and as far to the left as possible. To be more precise, if the ith vector of L is packed in the j_i-th vector of P at position k_i, we want the lexicographically least sequence (j_0, k_0), (j_1, k_1), ... of all packings that minimize the number of vectors of P.
+So for instance given:
+L = [[1,2,3], [4,5,6], [7], [8]]
+c = 6
+The resulting vector P would not be:
+[
+[1, 2, 3, 0, 0, 0]
+[4, 5, 6, 0, 0, 0]
+[7, 0, 8, 0, 0, 0]
+]
+But rather:
+[
+[1, 2, 3, 0, 7, 0]
+[4, 5, 6, 0, 8, 0]
+]\"\"\"
+
+import unittest
+class TestSearchExactFit(unittest.TestCase):
+    def setUp(self):
+        self.i = 6
+        self.P = [[1, 2, 3], [4, 5, 6], [7], [8]]
+
+    def test_exact_fit_case(self):
+        result = search(self.i, self.P)
+        #***Assertion statement***
+
+Complete the test stub like:
+##Final Code##
+```python
+import unittest
+class TestSearchExactFit(unittest.TestCase):
+    def setUp(self):
+        self.i = 6
+        self.P = [[1, 2, 3], [4, 5, 6], [7], [8]]
+
+    def test_exact_fit_case(self):
+        result = search(self.i, self.P)
+        self.assertEqual(result, self.P) 
+```
+Now for the following function or class description:
+
+{prompt}
+
+Complete the given test stub:
+
+{stub}
+
+"""
+
 self_consistency_prompt = """You have the following Python unittest code stub that includes 
 placeholder lines '#***Assertion statement***'. Your task is to complete the test stub by replacing the '#***Assertion statement***' with an actual assertion statement.
 
