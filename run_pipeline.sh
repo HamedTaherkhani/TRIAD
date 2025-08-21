@@ -3,7 +3,7 @@
 DATASET="LBPPPython"
 MODEL="qwen3-coder-480b-a35b-instruct"
 BACKEND="fireworks"
-TEST_APPROACH="holistic"
+TEST_APPROACH="self-consistency"
 CODE_APPROACH="vanilla"
 NUM_INSTANCES=5
 python test_generator.py \
@@ -20,6 +20,18 @@ python generate_solutions.py \
 
 export PYTHONPATH=`pwd`
 python dual/dual_agreement.py \
+    --dataset "$DATASET" \
+    --llm "$MODEL" \
+    --test_approach "$TEST_APPROACH" \
+    --code_approach "$CODE_APPROACH"
+
+python evaluation/test_coverage.py \
+    --dataset "$DATASET" \
+    --llm "$MODEL" \
+    --test_approach "$TEST_APPROACH" \
+    --code_approach "$CODE_APPROACH"
+
+python evaluation/mutation_testing.py \
     --dataset "$DATASET" \
     --llm "$MODEL" \
     --test_approach "$TEST_APPROACH" \

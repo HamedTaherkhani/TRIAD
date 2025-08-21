@@ -12,14 +12,14 @@ from function_executor_codet import check_correctness_with_test_cases
 from tqdm import tqdm
 import math
 from loaders import HumanEvalLoader, MBPPLoader, BigCodeLoader, LBPPLoaderPython, LBPPLoaderJava, kornia_loader
-from evaluation import compute_validity_rate
-
+from evaluation import compute_validity_rate, get_result_of_sorted_solutions
+import os
 
 # -------------------------------------------------------------------------------
 # Main processing: load, select best, run both original & generated tests, update, and compute metrics
 # -------------------------------------------------------------------------------
 def perform_dual_agreement(
-    tests_path: str, code_path: str, timeout, dataset_name, code_approach
+    tests_path: str, code_path: str, timeout, dataset_name, code_approach, verified_path
 ) -> None:
     with open(tests_path, "rb") as f:
         generated_tests: List[Function] = pickle.load(f)
@@ -56,9 +56,19 @@ def perform_dual_agreement(
     ground_truth_exec_result = evaluate_with_test_code(samples=handled_solutions, timeout=timeout, dataset_name=dataset_name)
     # ground_truth_exec_result = [00]
     count = 0
+    correct_per_task = {}
+    random_per_task = {}
     for aa in ground_truth_exec_result:
         if aa['passed']:
             count += 1
+            correct_per_task[aa['task_id']] = True
+        if aa['task_id'] not in random_per_task.keys():
+            random_per_task[aa['task_id']] = aa['passed']
+    print('len list\n')
+    print(len(list(correct_per_task.keys())))
+
+    print('len first:')
+    print(len([value for key,value in random_per_task.items() if value]))
     print(f'total count ground truth: {len(ground_truth_exec_result)}')
     print(f'total pass ground truth: {count}')
     dual_exec_result = evaluate_with_test_cases(solutions=handled_solutions, test_cases_dict=handled_test_cases, timeout=timeout, dataset_name=dataset_name)
@@ -86,12 +96,12 @@ def perform_dual_agreement(
         is_unittest=True
     else:
         is_unittest=False
-    compute_validity_rate(ranked_result=ranked_result, ground_truth_exec_result=ground_truth_exec_result, functions=generated_tests,is_unittest=is_unittest)
+    compute_validity_rate(ranked_result=ranked_result, ground_truth_exec_result=ground_truth_exec_result, functions=generated_tests,is_unittest=is_unittest, verified_path=verified_path)
     # print(ranked_result)
     # logger.info('pass rates of ranked solutions')
     # get_result_of_sorted_solutions(ground_truth_exec_result, ranked_result)
-    # logger.info('pass rates of random solutions')
-    # pass_at_K(ground_truth_exec_result)
+    logger.info('pass rates of random solutions')
+    pass_at_K(ground_truth_exec_result)
 
 # -------------------------------------------------------------------------------
 # Command-line entry point
@@ -136,7 +146,12 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    tests_path = f'generated_tests/final_tests/{args.test_approach}/{args.dataset}-{args.llm}.pkl'
-    code_path = f'generated_solutions/{args.code_approach}/{args.dataset}-{args.llm}.pkl'
-    file_name = f'output/dual_agreement/{args.dataset}-{args.llm}_{args.test_approach}_{args.code_approach}.txt'
-    perform_dual_agreement(tests_path=tests_path, code_path=code_path, timeout=args.timeout, dataset_name=args.dataset, code_approach=args.code_approach)
+    tests_path = f'output/generated_tests/final_tests/{args.test_approach}/{args.dataset}-{args.llm}.pkl'
+    code_path = f'output/generated_solutions/{args.code_approach}/{args.dataset}-{args.llm}.pkl'
+    verified_path = f'output/verified/{args.dataset}-{args.llm}-{args.code_approach}-{args.test_approach}.pkl'
+    cwd = os.getcwd()
+    os.makedirs(os.path.join(cwd, f'output/generated_tests/final_tests/{args.test_approach}'), exist_ok=True)
+    os.makedirs(os.path.join(cwd, f'output/generated_tests/stub/'), exist_ok=True)
+    os.makedirs(os.path.join(cwd, f'output/generated_solutions/{args.code_approach}'), exist_ok=True)
+    os.makedirs(os.path.join(cwd, f'output/verified/'), exist_ok=True)
+    perform_dual_agreement(tests_path=tests_path, code_path=code_path, timeout=args.timeout, dataset_name=args.dataset, code_approach=args.code_approach, verified_path=verified_path)

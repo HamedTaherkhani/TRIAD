@@ -5,6 +5,8 @@ import re
 import os
 import multiprocessing
 from tqdm import tqdm
+
+import datasets_and_llms
 from loaders import BigCodeLoader, LBPPLoaderPython
 from llm_requester import OpenaiRequester, HuggingfaceRequester, GeminiRequester, VertexAIRequester, AntropicRequester, FireworksAPIRequester, backends, init_llm, TokenUsage
 from datasets_and_llms import VALID_DATASETS, VALID_LLMS
@@ -46,8 +48,8 @@ def separate_python_code_blocks(text: str) -> List[str]:
 
 
 def generate_solutions(dataset_name, llm_name, approach, backend, num_instances, max_workers=8):
-    os.makedirs(f'generated_solutions/vanilla', exist_ok=True)
-    out_path = f'generated_solutions/vanilla/{dataset_name}-{llm_name}.pkl'
+    os.makedirs(f'output/generated_solutions/vanilla', exist_ok=True)
+    out_path = f'output/generated_solutions/vanilla/{dataset_name}-{llm_name}.pkl'
     total_token_usage = TokenUsage()
     if os.path.exists(out_path):
         print('Loading baseline solutions from ', out_path)
@@ -105,8 +107,8 @@ def generate_solutions(dataset_name, llm_name, approach, backend, num_instances,
     if approach == 'CoVe':
         print('Verifying solutions with CoVe...')
         # data = data[:1]
-        os.makedirs(f'generated_solutions/CoVe', exist_ok=True)
-        out_path = f'generated_solutions/CoVe/{dataset_name}-{llm_name}.pkl'
+        os.makedirs(f'output/generated_solutions/CoVe', exist_ok=True)
+        out_path = f'output/generated_solutions/CoVe/{dataset_name}-{llm_name}.pkl'
         if os.path.exists(out_path):
             print('Loading CoVe solutions from ', out_path)
         else:
@@ -134,7 +136,7 @@ def main():
 
     # Add LLM argument
     parser.add_argument('--llm', type=str, required=True, choices=VALID_LLMS, help=f'The LLM to use. Options are {VALID_LLMS}')
-    parser.add_argument('--approach', type=str, required=True,choices=['CoVe', 'vanilla'])
+    parser.add_argument('--approach', type=str, required=True,choices=datasets_and_llms.CODE_APPROACHES)
     parser.add_argument('--backend', type=str, required=True, choices=backends)
     parser.add_argument('--num_instances', type=int, required=False, default=None)
     # Parse arguments

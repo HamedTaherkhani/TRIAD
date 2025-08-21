@@ -65,14 +65,14 @@ class FireworksAPIRequester(LLMRequester):
             "Content-Type": "application/json",
             "Authorization": f"Bearer {self.key}"
         }
-        res = requests.request("POST", url, headers=headers, data=json.dumps(payload))
         try:
+            res = requests.request("POST", url, headers=headers, data=json.dumps(payload))
             res = res.json()
             self.token_usage.completion_tokens += res['usage']['completion_tokens']
             self.token_usage.prompt_tokens += res['usage']['prompt_tokens']
             self.token_usage.total_tokens += res['usage']['total_tokens']
             return [res['message']['content'] for res in res['choices']]
-        except (requests.exceptions.JSONDecodeError, KeyError) as e:
+        except (requests.exceptions.JSONDecodeError, KeyError, Exception) as e:
             print(res)
             print('Retrying after 10 seconds ...')
             return self.get_completion(messages, **kwargs)

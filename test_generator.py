@@ -10,6 +10,8 @@ import re
 from dotenv import load_dotenv
 from concurrent.futures import ProcessPoolExecutor
 from openai import OpenAI
+
+import datasets_and_llms
 from datasets_and_llms import VALID_DATASETS, VALID_LLMS
 from itertools import repeat
 from collections import defaultdict
@@ -365,7 +367,7 @@ def main(args):
         problems = problems[:args.num_instances]
     # print(f"Loaded {len(problems)} problems from dataset '{args.dataset}'.")
     if args.approach  == "self-consistency":
-        step1_output = f'generated_tests/stub/{args.dataset}-{args.model}.pkl'
+        step1_output = f'output/generated_tests/stub/{args.dataset}-{args.model}.pkl'
         if os.path.exists(step1_output):
             print(f'loading test stubs from {step1_output}...')
             with open(step1_output, 'rb') as a_file:
@@ -406,8 +408,8 @@ def main(args):
         # for sample in updated_problems:
         #     if sample.generated_tests:
         #         print(len(sample.generated_tests))
-        os.makedirs(f'generated_tests/final_tests/{args.approach}', exist_ok=True)
-        step2_output = f"generated_tests/final_tests/{args.approach}/{args.dataset}-{args.model}.pkl"
+        os.makedirs(f'output/generated_tests/final_tests/{args.approach}', exist_ok=True)
+        step2_output = f"'output/generated_tests/final_tests/{args.approach}/{args.dataset}-{args.model}.pkl"
         if os.path.exists(step2_output):
             print('loading tests from ' + step2_output)
             with open(step2_output, 'rb') as a_file:
@@ -444,8 +446,8 @@ def main(args):
             #     print('*'*100)
 
     elif args.approach == 'holistic':
-        os.makedirs(f'generated_tests/final_tests/{args.approach}', exist_ok=True)
-        step2_output = f"generated_tests/final_tests/{args.approach}/{args.dataset}-{args.model}.pkl"
+        os.makedirs(f'output/generated_tests/final_tests/{args.approach}', exist_ok=True)
+        step2_output = f"output/generated_tests/final_tests/{args.approach}/{args.dataset}-{args.model}.pkl"
         if not os.path.exists(step2_output):
             with ThreadPoolExecutor(max_workers=10) as executor:
                 results = list(
@@ -480,13 +482,12 @@ def main(args):
 
 if __name__ == "__main__":
 
-    approaches = ["self-consistency", "holistic"]
     parser = argparse.ArgumentParser(description="Run the script with specified dataset and LLM.")
     parser.add_argument("--dataset", type=str, required=True, help="Name of dataset (e.g. LBPPPython)",
                         choices=VALID_DATASETS)
     parser.add_argument("--model", type=str, required=True, help="Name of LLM model (e.g. gpt-4 or gpt-3.5-turbo)",
                         choices=VALID_LLMS)
-    parser.add_argument("--approach", type=str, required=True,choices=approaches)
+    parser.add_argument("--approach", type=str, required=True,choices=datasets_and_llms.TEST_APPROACHES)
     parser.add_argument('--backend', type=str, required=True, choices=backends)
     parser.add_argument('--num_instances', type=int, required=False, default=None)
     args = parser.parse_args()

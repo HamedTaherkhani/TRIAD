@@ -111,6 +111,10 @@ def show_results(functions, tp, fp, tn, fn):
     print(f'recall is {recall}')
     print(f'f1 score is {2*(precision*recall)/(precision+recall)}')
 
+def save_results(functions, verified_path):
+    with open(verified_path, "wb") as ff:
+        pickle.dump(functions, ff)
+
 def find_scores(func, dual_res, valtest):
     tests_scores = {}
     actual_scores = {}
@@ -141,7 +145,7 @@ def find_scores(func, dual_res, valtest):
     return all_passed_tests, tests_scores, actual_scores
 
 
-def compute_validity_rate(ranked_result, ground_truth_exec_result, functions, is_unittest):
+def compute_validity_rate(ranked_result, ground_truth_exec_result, functions, is_unittest,verified_path):
     print(f'ranked_result len: {len(ranked_result)}')
     print(f'functions len: {len(functions)}')
     # print(dict(ranked_result))
@@ -150,7 +154,7 @@ def compute_validity_rate(ranked_result, ground_truth_exec_result, functions, is
     print(f'ground_truth_exec_result len: {len(ground_truth_exec_result)}')
     # print(ground_truth_exec_result['0'])
     tp = fp = tn = fn = 0
-
+    num_passed = 0
     for idd, func in enumerate(functions):
         if func.task_id in ranked_result and ranked_result[func.task_id]:
             best_sol = ranked_result[func.task_id][0][0][0]
@@ -163,13 +167,17 @@ def compute_validity_rate(ranked_result, ground_truth_exec_result, functions, is
             except Exception:
                 continue
             # print(f'best sol is \n{best_sol}')
+        is_passed = ground_truth_exec_result[func.task_id][best_sol]
+        if is_passed:
+            num_passed += 1
         tp_, fp_, tn_, fn_, func = compute_vr_func(func, best_sol, idd, is_unittest)
         tp += tp_
         fp += fp_
         tn += tn_
         fn += fn_
+    print(f'total passed using dual: {num_passed}')
     show_results(functions, tp, fp, tn, fn)
-
+    save_results(functions,verified_path)
 
 def get_result_of_sorted_solutions(ground_truth_results_list, sorted_solutions_by_task, topks=[1,2,10]):
     # sorted_solutions_by_task {task_id: [([solutions], score), ...]}
