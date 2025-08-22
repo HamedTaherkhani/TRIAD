@@ -155,7 +155,8 @@ def get_line_coverage_unittest(code_str, test_case_strings):
     # Generate a unique identifier for this test run to avoid module caching issues
     unique_id = uuid.uuid4().hex
     test_module_name = f'test_code_{unique_id}'
-    bigcode_venv_path = os.getcwd() + '/.bigcode_venv/bin'
+    bigcode_venv_path = os.getcwd() + '/.bigcode_venv/bin/activate'
+    bigcode_python_path = os.getcwd() + '/.bigcode_venv/bin/python'
     # Use TemporaryDirectory to ensure isolation
     with tempfile.TemporaryDirectory() as temp_dir:
         # temp_dir = '/home/hamed/PycharmProjects/hallucination/temp_dir2'
@@ -189,6 +190,7 @@ def get_line_coverage_unittest(code_str, test_case_strings):
             try:
                 env = os.environ.copy()
                 env['MPLBACKEND'] = 'Agg'
+                # print(f'source {bigcode_venv_path} && coverage run -m unittest discover')
                 subprocess.run(
                     'coverage run -m unittest discover',
                     preexec_fn=lambda: limit_resources(max_memory_mb),
@@ -208,7 +210,7 @@ def get_line_coverage_unittest(code_str, test_case_strings):
                 print(f"Test interrupted")
                 pass
             subprocess.run(
-                'python -m coverage json -o coverage.json',
+                f'{bigcode_python_path} -m coverage json -o coverage.json',
                 cwd=temp_dir, shell=True,
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
@@ -276,7 +278,7 @@ def measure_coverage(functions: List[Function], dataset):
         coverage_results.append(len(set().union(*lines_per_testcase))/total_lines)
 
         # intersection_results.append(len(set.union(*coverage_results[idx])) / total_lines)
-    # print(coverage_results)
+    print(coverage_results)
     return coverage_results
 
 if __name__ == '__main__':

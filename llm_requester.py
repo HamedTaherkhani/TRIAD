@@ -6,6 +6,7 @@ import os
 import requests
 import json
 from dotenv import load_dotenv
+# from vllm import LLM, SamplingParams
 load_dotenv()
 # from swebench import generate_test_cases_for_swebench
 # import vertexai
@@ -124,176 +125,134 @@ class OpenaiRequester(LLMRequester):
         return [choice.message.content for choice in completion.choices]
 
 
-class VertexAIRequester(LLMRequester):
-    def __init__(self, name):
-        PROJECT_ID = os.getenv('GCP_PROJECT')
-        GCP_LOCATION = os.getenv('GCP_LOCATION')
-        vertexai.init(project=PROJECT_ID, location=GCP_LOCATION)
-        self.config = GenerationConfig(logprobs=2, response_logprobs=True, temperature=0, max_output_tokens=1500)
-        model = GenerativeModel(name)
-        self.chat_session = model.start_chat()
+import os
+from typing import List, Dict, Any
 
-    def get_completion(self, messages, **kwargs):
-        prompt = ''.join([message['content'] for message in messages])
-        try:
-            responses = self.chat_session.send_message(prompt, stream=False, generation_config=self.config)
-        except ResponseValidationError:
-            return {
-                'text': ' ',
-                'logprobs': [],
-            }
-        res = responses.candidates[0].content.parts[0].text
-        tokens_with_logprobs = []
-        for lgp in responses.candidates[0].logprobs_result.top_candidates:
-            tokens_with_logprobs.append((lgp.candidates[0].token, lgp.candidates[0].log_probability, [(l.token, l.log_probability) for l in lgp.candidates[1:]]))
-        return {
-            'text': res,
-            'logprobs': tokens_with_logprobs
-        }
 
-class AntropicRequester(LLMRequester):
-    def __init__(self, name):
-        self.client = anthropic.Anthropic(api_key=os.getenv("anthropic_key"))
+class VLLMRequester(LLMRequester):
+    """
+    Local inference using vLLM with Hugging Face models.
+    Example model names: "meta-llama/Meta-Llama-3-8B-Instruct", "mistralai/Mistral-7B-Instruct-v0.3", etc.
+
+    Optional env vars:
+      VLLM_TP_SIZE                -> tensor parallel size (default: 1)
+      VLLM_GPU_MEM_UTIL           -> gpu_memory_utilization (default: 0.9)
+      VLLM_DTYPE                  -> dtype, e.g. "auto", "float16", "bfloat16" (default: "auto")
+      VLLM_TRUST_REMOTE_CODE      -> "1" to enable trust_remote_code (default: "0")
+    """
+
+    def __init__(
+        self,
+        name: str,
+        token_usage,
+        *,
+        tensor_parallel_size: int | None = None,
+        gpu_memory_utilization: float | None = None,
+        dtype: str | None = None,
+        trust_remote_code: bool | None = None,
+        **llm_kwargs: Any,
+    ):
         self.name = name
-    def get_completion(self, messages, **kwargs):
-        prompt = ''.join([message['content'] for message in messages])
-        response = self.client.messages.create(
+        self.token_usage = token_usage
+
+        # Defaults can also be provided through env vars
+        tp = int(os.getenv("VLLM_TP_SIZE", "1")) if tensor_parallel_size is None else tensor_parallel_size
+        gmu = float(os.getenv("VLLM_GPU_MEM_UTIL", "0.9")) if gpu_memory_utilization is None else gpu_memory_utilization
+        dt = os.getenv("VLLM_DTYPE", "auto") if dtype is None else dtype
+        trc = (os.getenv("VLLM_TRUST_REMOTE_CODE", "0") == "1") if trust_remote_code is None else trust_remote_code
+
+        # Spin up a local vLLM engine for the HF model
+        # You can pass extra engine params via **llm_kwargs (e.g. max_model_len, max_num_seqs, enforce_eager)
+        self.llm = LLM(
             model=self.name,
-            max_tokens=4000,
-            # temperature=1,
-            system="You are an expert python developer who writes good test cases.",
-            messages=[
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": prompt
-                        }
-                    ]
-                }
-            ]
+            tensor_parallel_size=tp,
+            gpu_memory_utilization=gmu,
+            dtype=dt,
+            trust_remote_code=trc,
+            **llm_kwargs,
         )
-        text = response.content[0].text
-        return {
-            'text': text,
-            'logprobs': []
-        }
 
-class GeminiRequester(LLMRequester):
-    def __init__(self, candidates=1):
-        genai.configure(api_key=os.getenv('gemini_key'))
-        self.client = genai.GenerativeModel("models/gemini-1.5-pro")
-        self.candidates = candidates
-    def get_completion(self, messages, **kwargs):
-        try:
-            prompt = ''.join([message['content'] for message in messages])
-            response = self.client.generate_content(
-                prompt,
-                generation_config=genai.types.GenerationConfig(
-                    # Only one candidate for now.
-                    candidate_count=self.candidates,
-                    # stop_sequences=["x"],
-                    # max_output_tokens=20,
-                    # temperature=0.3,
-                    # top_k=8,
-                    # response_logprobs=True,
-                    # logprobs=2
-                ),
+        # Cache tokenizer for chat templating & token counting
+        self.tokenizer = self.llm.get_tokenizer()
+
+    def get_total_usage(self):
+        return self.token_usage
+
+    def _to_prompt_from_messages(self, messages: List[Dict[str, str]]) -> str:
+        """
+        Convert OpenAI-style messages into a single prompt using the model's HF chat template.
+        """
+        # HF expects [{"role":"system"/"user"/"assistant", "content":"..."}] shape
+        # Ensure generation prompt is appended
+        prompt = self.tokenizer.apply_chat_template(
+            messages,
+            add_generation_prompt=True,
+            tokenize=False,
+        )
+        return prompt
+
+    def _count_prompt_tokens(self, messages: List[Dict[str, str]]) -> int:
+        return len(
+            self.tokenizer.apply_chat_template(
+                messages,
+                add_generation_prompt=True,
+                tokenize=True,
             )
-            candidates = []
-            for idx, candidate in enumerate(response.candidates):
-                a = {
-                    'text': candidate.content.parts[0].text,
-                    'logprobs': []
-                }
-                candidates.append(a)
-            return candidates
+        )
+
+    def get_completion(
+        self,
+        messages: list[dict],
+        temperature: float = 0,
+        seed: int = 123,
+        n: int = 1,
+    ) -> list[str]:
+        # keep your prompt tweak on the first message
+        messages[0]["content"] = (
+            messages[0]["content"]
+            + "PUT THE PYTHON IMPLEMENTATION IN BETWEEN ```python and ``` tags "
+        )
+
+        # Build prompt via HF chat template
+        prompt = self._to_prompt_from_messages(messages)
+
+        # Sampling parameters (vLLM follows OpenAI-style knobs; `seed` is supported) :contentReference[oaicite:3]{index=3}
+        sampling = SamplingParams(
+            temperature=temperature,
+            n=n,
+            seed=seed,
+            # You can expose more knobs here if you want parity with your OpenAI path:
+            # top_p=..., top_k=..., max_tokens=..., repetition_penalty=..., presence_penalty=..., frequency_penalty=...
+        )
+
+        # Generate (single prompt, possibly multiple candidates via n)
+        try:
+            outputs = self.llm.generate([prompt], sampling)
         except Exception as e:
-            return [{
-                'text': '',
-                'logprobs': []
-            }]
-# CodeLlama Requester
-class HuggingfaceRequester(LLMRequester):
-    def __init__(self, model_name):
-        quantization_config = BitsAndBytesConfig(
-            load_in_4bit=True,
-            bnb_4bit_compute_dtype=torch.float16,
-            # load_in_8bit_fp32_cpu_offload=True
-        )
+            print(e)
+            raise e
 
-        self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        device_map = {
-            "": self.device.type  # Automatically handles the best placement based on your setup
-        }
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name, )
-        self.tokenizer.pad_token = self.tokenizer.eos_token
-        self.model = AutoModelForCausalLM.from_pretrained(model_name, device_map=device_map)
+        # vLLM returns a list of RequestOutput; we only passed one prompt
+        req_out = outputs[0]
 
-    def get_completion(self, messages, **kwargs):
-        prompt = ''.join([message['content'] for message in messages])
-        input_ids = self.tokenizer.encode(prompt, return_tensors='pt').to(self.device)
-        max_length = kwargs.get('max_tokens', 2000) + input_ids.shape[1]
-        inputs = self.tokenizer(
-            prompt,
-            return_tensors="pt",  # Return as PyTorch tensors
-            padding=True,  # Enable padding
-            truncation=True,  # Enable truncation
-            max_length=max_length,  # Limit sequence length
-            return_attention_mask=True  # Generate the attention mask
-        ).to(self.device)
+        # Token accounting: prompt tokens via tokenizer; completion tokens via each choice's token_ids
+        # (vLLM doesn’t always return aggregated usage like OpenAI; we compute it here.) :contentReference[oaicite:4]{index=4}
+        prompt_tokens = self._count_prompt_tokens(messages)
+        completion_tokens_total = 0
+        texts: list[str] = []
 
+        for choice in req_out.outputs:
+            texts.append(choice.text)
+            if hasattr(choice, "token_ids") and choice.token_ids is not None:
+                completion_tokens_total += len(choice.token_ids)
 
+        # Update your shared token_usage object defensively
+        self.token_usage.prompt_tokens += prompt_tokens
+        self.token_usage.completion_tokens += completion_tokens_total
+        self.token_usage.total_tokens += prompt_tokens + completion_tokens_total
 
-        outputs = self.model.generate(
-            input_ids=inputs['input_ids'],
-            max_length=max_length,
-            temperature=kwargs.get('temperature', 0.0),
-            do_sample=False,
-            num_return_sequences=1,
-            eos_token_id=self.tokenizer.eos_token_id,
-            pad_token_id=self.tokenizer.pad_token_id,
-            output_scores=True,
-            return_dict_in_generate=True,
-            attention_mask=inputs["attention_mask"],
-        )
-        generated_sequence = outputs.sequences[0]
-        generated_tokens = generated_sequence[input_ids.shape[1]:]  # Exclude prompt tokens
-        completion = self.tokenizer.decode(generated_tokens, skip_special_tokens=True)
+        return texts
 
-        # Access the scores (logits) for each step
-        scores = outputs.scores
-        # List to hold results: (token, log_prob, all_log_probs)
-        tokens_with_logprobs = []
-
-        top_k = 5
-
-        # Iterate through each generated token
-        for i, token_id in enumerate(generated_tokens):
-            # Get the logits for the i-th step
-            logits = scores[i]  # Shape: (batch_size, vocab_size)
-
-            # Convert logits to log probabilities
-            log_probs = F.log_softmax(logits, dim=-1)[0]  # Get log probs for the current step
-
-            # Extract the log probability of the generated token
-            generated_log_prob = log_probs[token_id].item()
-
-            # Get the top-k log probabilities and their indices
-            top_k_log_probs, top_k_indices = torch.topk(log_probs, top_k)
-
-            # Convert top-k indices and log probs to tuples (token, log_prob)
-            top_k_candidates = [(self.tokenizer.decode([tid]), top_k_log_probs[j].item()) for j, tid in
-                                enumerate(top_k_indices)]
-
-            # Append the generated token, its log prob, and top-k candidate log probs
-            tokens_with_logprobs.append((self.tokenizer.decode([token_id]), generated_log_prob, top_k_candidates))
-
-        return {
-            'text': completion,
-            'logprobs': tokens_with_logprobs
-            }
 
 def init_llm(model: str, backend:str) -> LLMRequester:
     token_usage = TokenUsage()

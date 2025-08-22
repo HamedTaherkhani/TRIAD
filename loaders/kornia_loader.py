@@ -1,5 +1,6 @@
 import json
 import os
+from reusable_classes import Function
 
 class kornia_loader:
     def __init__(self):
@@ -14,16 +15,29 @@ class kornia_loader:
         self.tests = []
         self.sols = []
         self.ids = []
+        self.functions = []
         for item in data:
             self.prompts.append(item['prompt'])
             self.tests.append(item['test_cases'])
             self.ids.append(item['task_id'])
+            self.functions.append(Function(
+                    prompt=item['prompt'],
+                    generated_testcases=[],
+                    solution="",
+                    original_tests=item['test_cases'],
+                    generated_solutions=[],
+                    task_id=item['task_id'],
+                    dataset='Kornia'
+                ))
             # relative_path = item['ground Truth']
             # current_path = os.getcwd()
             # absolute_path = os.path.join(current_path, relative_path)
             # with open(absolute_path, 'r') as file:
             #     content = file.read()
             self.sols.append("")
+
+    def get_functions(self):
+        return self.functions
     def get_prompts(self):
         return self.prompts
     def get_tests(self):

@@ -23,7 +23,7 @@ from tqdm import tqdm
 # from openai import OpenAI  # or your actual openai usage
 from function_executor import run_unit_tests_parallel
 # from loaders.ClassEvalLoader import ClassEvalLoader  # The class that loads your dataset
-from loaders import BigCodeLoader, LBPPLoaderPython
+from loaders import BigCodeLoader, LBPPLoaderPython, kornia_loader
 from prompts import test_holistic_prompt, test_setup_prompt, test_setup_prompt_classeval, PY_TEST_GENERATION_FEW_SHOT_BigCodeBench, test_setup_prompt_lbpp, self_consistency_prompt, two_stage_enrich_prompt
 from reusable_classes import Function, TestCase
 from llm_requester import FireworksAPIRequester, LLMRequester, OpenaiRequester, backends, init_llm, TokenUsage
@@ -374,6 +374,8 @@ def main(args):
         problems:List[Function] = LBPPLoaderPython().get_functions()
     elif args.dataset == "BigCodeBenchHard":
         problems:List[Function] = BigCodeLoader(hard=1).get_functions()
+    elif args.dataset == "Kornia":
+        problems:List[Function] = kornia_loader().get_functions()
     else:
         # If you had other loaders, you could add them here
         raise ValueError(f"Unsupported dataset: {args.dataset}")

@@ -256,11 +256,11 @@ def run_unit_tests_parallel(code_str: str, test_list: List[str]):
     # multiprocessing.set_start_method('spawn')
     # print(f'Processing {len(test_list)} test cases...')
     args = [(test_str, code_str) for test_str in test_list]
-    with multiprocessing.Pool() as pool:
+    with multiprocessing.Pool(os.cpu_count()) as pool:
         results = pool.map_async(pool_worker_subprocess, args)
         try:
             # Set a reasonable timeout for all tests to complete
-            results = results.get(timeout=40)  # e.g., 5 minutes
+            results = results.get(timeout=3*60)  # e.g., 3 minutes
         except multiprocessing.TimeoutError:
             print("Timeout while waiting for worker processes to finish.")
             pool.terminate()
@@ -273,3 +273,4 @@ def run_unit_tests_parallel(code_str: str, test_list: List[str]):
         except Exception as e:
             return [(False, 0, 1, e.__str__()) for _ in test_list]
     return results
+

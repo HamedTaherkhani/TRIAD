@@ -8,7 +8,7 @@ from tqdm import tqdm
 
 import datasets_and_llms
 from loaders import BigCodeLoader, LBPPLoaderPython
-from llm_requester import OpenaiRequester, HuggingfaceRequester, GeminiRequester, VertexAIRequester, AntropicRequester, FireworksAPIRequester, backends, init_llm, TokenUsage
+from llm_requester import backends, init_llm, TokenUsage
 from datasets_and_llms import VALID_DATASETS, VALID_LLMS
 import pickle
 from reusable_classes import Function
