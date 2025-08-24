@@ -17,7 +17,7 @@ from abc import ABC, abstractmethod
 from llamaapi import LlamaAPI
 # import google.generativeai as genai
 from dataclasses import dataclass
-backends = ['openAI', 'fireworks']
+backends = ['openAI', 'fireworks', 'VLLM']
 
 class LLMRequester(ABC):
     @abstractmethod
@@ -154,7 +154,10 @@ class VLLMRequester(LLMRequester):
     ):
         self.name = name
         self.token_usage = token_usage
-
+        if name == 'gemma3':
+            path_to_gemma3 = "/home/hamedth/projects/def-hemmati-ac/hamedth/hugging_face/models--google--gemma-3-12b-it"
+        else:
+            raise NotImplementedError("The model should be downloaded in the local")
         # Defaults can also be provided through env vars
         tp = int(os.getenv("VLLM_TP_SIZE", "1")) if tensor_parallel_size is None else tensor_parallel_size
         gmu = float(os.getenv("VLLM_GPU_MEM_UTIL", "0.9")) if gpu_memory_utilization is None else gpu_memory_utilization
@@ -164,7 +167,7 @@ class VLLMRequester(LLMRequester):
         # Spin up a local vLLM engine for the HF model
         # You can pass extra engine params via **llm_kwargs (e.g. max_model_len, max_num_seqs, enforce_eager)
         self.llm = LLM(
-            model=self.name,
+            model=path_to_gemma3,
             tensor_parallel_size=tp,
             gpu_memory_utilization=gmu,
             dtype=dt,
@@ -260,6 +263,8 @@ def init_llm(model: str, backend:str) -> LLMRequester:
         llm = OpenaiRequester(name=model, token_usage=token_usage)
     elif backend == 'fireworks':
         llm = FireworksAPIRequester(name=model,token_usage=token_usage)
+    elif backend == "VLLM":
+        llm = VLLMRequester(name=model,token_usage=token_usage)
     else:
         raise ValueError('backend not known')
     return llm
