@@ -83,12 +83,6 @@ class OpenaiRequester(LLMRequester):
         if backend is None:
             self.client = OpenAI(api_key=self.key)
         else:
-            if backend == "https://api.aimlapi.com/v1":
-                self.key = os.getenv('aimlapi_key')
-            elif backend == "https://api.deepinfra.com/v1/openai":
-                self.key = os.getenv('deepinfraapi_key')
-            else:
-                self.key = os.getenv('deepseek_key')
             self.client = OpenAI(api_key=self.key, base_url=backend)
         self.name = name
 
@@ -128,7 +122,7 @@ def init_llm(model: str, backend:str) -> LLMRequester:
     elif backend == 'fireworks':
         llm = FireworksAPIRequester(name=model,token_usage=token_usage)
     elif backend == "VLLM":
-        llm = OpenaiRequester(name=model,token_usage=token_usage, backend=backend)
+        llm = OpenaiRequester(name='local-vllm',token_usage=token_usage, backend=backend)
     else:
         raise ValueError('backend not known')
     return llm
