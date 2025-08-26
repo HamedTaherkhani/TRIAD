@@ -1,0 +1,32 @@
+name: Triad
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy
+  - python-dotenv
+  - "datasets<4.0.0"
+  - coverage=7.10.1
+  - pytest=8.4.1
+  - requests=2.32.4
+  - autopep8
+  - astor
+  - evaluate
+  - pip
+  - pip:
+      # --- AI/LLM clients (pip-only) ---
+      - openai==1.99.1
+      - anthropic==0.60.0
+      - google-genai==1.24.0
+      - llamaapi==0.1.36
+
+      # --- Testing/utility (pip-only) ---
+      - mutmut==2.5.1
+
+      # --- vLLM + PyTorch stack via pip to ensure CUDA/ABI compatibility ---
+      # NOTE: We intentionally do NOT install torch from conda to avoid conflicts.
+      # Let pip resolve a torch version compatible with vLLM.
+      - vllm==0.10.1.1
+      - torch           # no version pin: satisfied by vLLM's constraints
+      - torchvision     # matches the resolved torch
+      - torchaudio      # matches the resolved torch
