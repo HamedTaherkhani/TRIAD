@@ -1,9 +1,15 @@
 name: Triad
 channels:
   - conda-forge
+variables:
+  PYTHONNOUSERSITE: "1"   # ignore ~/.local site-packages (no TF leakage)
+  TRANSFORMERS_NO_TF: "1" # transformers won't import TensorFlow
+  VLLM_USE_V1: "0"        # avoid numba/llvmlite/LLVM/glibc headaches
+  TORCH_COMPILE_DISABLE: "1"  # belt-and-suspenders: avoid torch.compile path
+  TORCHDYNAMO_DISABLE: "1"
 dependencies:
   - python=3.11
-  - numpy
+  - "numpy<2"
   - python-dotenv
   - "datasets<4.0.0"
   - coverage=7.10.1
@@ -12,14 +18,18 @@ dependencies:
   - autopep8
   - astor
   - evaluate
+  - "pybind11>=2.12"
   - pip
   - pip:
       # --- AI/LLM clients (pip-only) ---
+      - jupyterlab
       - openai==1.99.1
       - anthropic==0.60.0
       - google-genai==1.24.0
       - llamaapi==0.1.36
-
+      - transformers==4.55
+      - tokenizers
+      - safetensors
       # --- Testing/utility (pip-only) ---
       - mutmut==2.5.1
 
@@ -27,6 +37,8 @@ dependencies:
       # NOTE: We intentionally do NOT install torch from conda to avoid conflicts.
       # Let pip resolve a torch version compatible with vLLM.
       - vllm==0.10.1.1
+      - blake3
+      - networkx
       - torch           # no version pin: satisfied by vLLM's constraints
       - torchvision     # matches the resolved torch
       - torchaudio      # matches the resolved torch
