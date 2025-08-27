@@ -10,7 +10,7 @@ import re
 from dotenv import load_dotenv
 from concurrent.futures import ProcessPoolExecutor
 from openai import OpenAI
-
+from processing import split_unittest_code
 import datasets_and_llms
 from datasets_and_llms import VALID_DATASETS, VALID_LLMS
 from itertools import repeat
@@ -291,7 +291,7 @@ class TestCodeGenerator:
         code_blocks = re.findall(r"```python(.*?)```", raw_output, re.DOTALL)
 
         # Optional: strip leading/trailing whitespace from each block
-        code_blocks = [block.strip() for block in code_blocks]
+        code_blocks = [case for block in code_blocks for case in split_unittest_code(block.strip())]
         testcases = []
         for block in code_blocks:
             # print(block)
