@@ -240,22 +240,26 @@ def get_line_coverage_unittest(code_str, test_case_strings):
             # Restore the original working directory
             os.chdir(original_cwd)
 
-def _measure_coverage_for_function(func):
+def _measure_coverage_for_function(func, approach):
     """
     Helper function to encapsulate the coverage call
     for a single Function object.
     """
-    tests_list = [tc.text for tc in func.generated_testcases if (tc.is_valid==1 and tc.prediction_is_valid == 1)]
+    if approach == 'base':
+        tests_list = [tc.text for tc in func.generated_testcases if tc.is_valid == 1]
+    else:
+        tests_list = [tc.text for tc in func.generated_testcases if (tc.is_valid==1 and tc.prediction_is_valid == 1)]
     return get_line_coverage_unittest(func.solution, tests_list)
 
-def measure_coverage(functions: List[Function], dataset):
+def measure_coverage(functions: List[Function], dataset, approach):
     coverage_results = []
     if 'BigCodeBench' in dataset or dataset == 'LBPPPython':
+        func_with_approach = partial(_measure_coverage_for_function, approach=approach)  # or "strict"
         with Pool() as pool:
             # imap gives you an iterator, so wrap in list or iterate to collect results
             coverage_results = list(
                 tqdm(
-                    pool.imap(_measure_coverage_for_function, functions),
+                    pool.imap(func_with_approach, functions, chunksize=16),
                     total=len(functions),
                     desc="Calculating coverage"
                 )
@@ -290,10 +294,13 @@ if __name__ == '__main__':
     parser.add_argument('--code_approach', type=str, required=True,choices=CODE_APPROACHES)
     parser.add_argument('--test_approach', type=str, required=True,choices=TEST_APPROACHES)
     args = parser.parse_args()
-    verified_path = f'output/verified/{args.dataset}-{args.llm}-{args.code_approach}-{args.test_approach}.pkl'
+    if args.code_approach == 'base':
+        verified_path = f'output/generated_tests/final_tests/{args.test_approach}/{args.dataset}-{args.llm}.pkl'
+    else:
+        verified_path = f'output/verified/{args.dataset}-{args.llm}-{args.code_approach}-{args.test_approach}.pkl'
     with open(verified_path, "rb") as f:
         verified_tests: List[Function] = pickle.load(f)
 
-    coverage_results = measure_coverage(functions=verified_tests, dataset=args.dataset)
+    coverage_results = measure_coverage(functions=verified_tests, dataset=args.dataset, approach=args.code_approach)
     print('Average Line Coverage:')
     print(sum(coverage_results)/len(coverage_results))

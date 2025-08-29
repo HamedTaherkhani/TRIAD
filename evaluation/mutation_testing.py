@@ -343,7 +343,7 @@ def get_top_level_function_names(source_code):
     return top_level_funcs
 
 
-def perform_mutation_testing(functions: List[Function], dataset):
+def perform_mutation_testing(functions: List[Function], dataset, approach):
     functions_tests = []
     for f in functions:
         func_names = get_top_level_function_names(f.solution)
@@ -352,7 +352,10 @@ def perform_mutation_testing(functions: List[Function], dataset):
             # print('here')
             continue
         # functions_tests.append((f.solution, [ff.text for ff in f.testcases if ff.is_valid]))
-        functions_tests.append((func_names, f.solution, [ff.text for ff in f.generated_testcases if (ff.is_valid == 1 and ff.prediction_is_valid == 1)]))
+        if approach == 'base':
+            functions_tests.append((func_names, f.solution, [ff.text for ff in f.generated_testcases if ff.is_valid == 1]))
+        else:
+            functions_tests.append((func_names, f.solution, [ff.text for ff in f.generated_testcases if (ff.is_valid == 1 and ff.prediction_is_valid == 1)]))
     all_tests = []
     for f in functions_tests:
         all_tests.extend(f[2])
@@ -389,7 +392,10 @@ if __name__ == '__main__':
     parser.add_argument('--code_approach', type=str, required=True,choices=CODE_APPROACHES)
     parser.add_argument('--test_approach', type=str, required=True,choices=TEST_APPROACHES)
     args = parser.parse_args()
-    verified_path = f'output/verified/{args.dataset}-{args.llm}-{args.code_approach}-{args.test_approach}.pkl'
+    if args.code_approach == 'base':
+        verified_path = f'output/generated_tests/final_tests/{args.test_approach}/{args.dataset}-{args.llm}.pkl'
+    else:
+        verified_path = f'output/verified/{args.dataset}-{args.llm}-{args.code_approach}-{args.test_approach}.pkl'
     with open(verified_path, "rb") as f:
         verified_tests: List[Function] = pickle.load(f)
-    perform_mutation_testing(verified_tests, args.dataset)
+    perform_mutation_testing(verified_tests, args.dataset, args.code_approach)
