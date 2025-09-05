@@ -77,8 +77,9 @@ class OpenaiRequester(LLMRequester):
     def __init__(self, name,token_usage, backend=None):
         self.key = os.getenv('openai_key')
         self.token_usage = token_usage
+        self.backend = backend
         if backend == 'VLLM':
-            backend = "http://localhost:8000/v1"
+            backend = "http://localhost:8005/v1"
             self.key = 'EMPTY'
         if backend is None:
             self.client = OpenAI(api_key=self.key)
@@ -104,11 +105,13 @@ class OpenaiRequester(LLMRequester):
         }
         if self.name not in ('gpt-5-mini', 'o3-mini', 'o3'):
             params['temperature'] = temperature
+            if n!=1 and self.backend == 'VLLM' and temperature == 0:
+                params['temperature'] = 0.3
         try:
             completion = self.client.chat.completions.create(**params)
         except Exception as e:
             print(e)
-            raise e
+            return messages[0]['content']
         self.token_usage.completion_tokens += completion.usage.completion_tokens
         self.token_usage.prompt_tokens += completion.usage.prompt_tokens
         self.token_usage.total_tokens += completion.usage.total_tokens

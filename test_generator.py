@@ -70,7 +70,52 @@ class TestCodeGenerator:
             print("No class found.")
             return ''
 
-    def generate_stubs_for_problem(self, problem: Function) -> Function:
+    def extract_unittest_cases(self,code: str):
+        """
+        Extract unittest test case classes from a given Python code string.
+        Each extracted test case will include all import statements found in the code.
+
+        Parameters:
+        - code (str): A string containing Python code with imports, functions, and unittest classes.
+
+        Returns:
+        - list[str]: A list of strings, each containing one unittest test case with imports included.
+        """
+        # Extract import statements (supports both `import x` and `from x import y`)
+        imports = "\n".join(re.findall(r'^(?:import|from) .+$', code, flags=re.MULTILINE))
+
+        # Extract unittest classes (class ... (unittest.TestCase): ... )
+        test_cases = re.findall(
+            r'(class\s+\w+\(unittest\.TestCase\):[\s\S]*?)(?=\nclass\s+\w+\(unittest\.TestCase\):|\Z)',
+            code,
+            flags=re.MULTILINE,
+        )
+
+        # Prepend imports to each test case
+        return [f"{imports}\n\n{tc.strip()}" for tc in test_cases]
+
+    def count_unittest_classes(self, code: str) -> str:
+        """
+        Count how many unittest.TestCase classes are defined in the given code.
+
+        Parameters:
+        - code (str): A string containing Python code.
+
+        Returns:
+        - str: "0" if none, "1" if exactly one, "more" if more than one.
+        """
+        # Find all classes inheriting unittest.TestCase
+        matches = re.findall(r'class\s+\w+\(unittest\.TestCase\):', code)
+
+        count = len(matches)
+        if count == 0:
+            return "0"
+        elif count == 1:
+            return "1"
+        else:
+            return "more"
+
+    def generate_stubs_for_problem(self, problem: Function, model: str) -> Function:
         """
         Calls the LLM to generate a single string containing 5-10 unittest stubs.
         Splits those stubs into a list of strings (one per stub) and stores them
@@ -104,9 +149,18 @@ class TestCodeGenerator:
         code_blocks = ["import unittest\n" + block.strip() for block in code_blocks]
         testcases = []
         for block in code_blocks:
-            testcases.append(TestCase(
-                text=block,
-            ))
+            if self.count_unittest_classes(block) == "0":
+                continue
+            elif self.count_unittest_classes(block) == "1":
+                testcases.append(TestCase(
+                    text=block,
+                ))
+            else:
+                blocks = self.extract_unittest_cases(block)
+                for block in blocks:
+                    testcases.append(TestCase(
+                        text=block,
+                    ))
         problem.generated_testcases = testcases
         return problem
 
@@ -312,7 +366,7 @@ def parallel_generate_stubs(problem: Function, model: str, backend:str) -> Tuple
     """
     llm = init_llm(model, backend)
     generator = TestCodeGenerator(llm)
-    return generator.generate_stubs_for_problem(problem), llm.get_total_usage()
+    return generator.generate_stubs_for_problem(problem, model), llm.get_total_usage()
 
 def parallel_generate_tests_hollistic(problem: Function, model: str, backend:str):
     try:
